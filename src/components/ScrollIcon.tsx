@@ -13,28 +13,21 @@ export default function ScrollIcon({ href, label }: ScrollIconProps) {
         <div className="flex flex-col items-center">
             <a
                 href={href}
-                className="group relative flex items-center justify-center w-14 h-14"
+                className="group relative flex items-center justify-center w-10 h-10"
                 aria-label={label}
             >
-                {/* Animated Ripple Effect */}
+                {/* Senior-Level Circle Container: Small, Solid Contrast, Sharp Shadow */}
                 <motion.div
-                    className="absolute inset-0 rounded-full bg-blue-600/10 -z-10"
-                    animate={{ scale: [1, 1.4, 1], opacity: [0.3, 0, 0.3] }}
-                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                />
-
-                {/* Main Circle Container */}
-                <motion.div
-                    animate={{ y: [0, 10, 0] }}
+                    animate={{ y: [0, 6, 0] }}
                     transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-                    className="w-full h-full glass rounded-full flex items-center justify-center text-blue-600 shadow-[0_8px_32px_rgba(37,99,235,0.2)] border-white/40 backdrop-blur-xl group-hover:scale-110 group-hover:border-blue-500/50 transition-all duration-500"
+                    className="w-full h-full rounded-full flex items-center justify-center bg-white dark:bg-slate-900 text-slate-900 dark:text-white border-2 border-slate-900 dark:border-white shadow-[0_4px_12px_rgba(0,0,0,0.1)] transition-all duration-300 group-hover:bg-slate-900 group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-slate-900 group-hover:scale-110"
                 >
-                    <ChevronDown className="w-6 h-6 group-hover:translate-y-0.5 transition-transform" />
+                    <ChevronDown className="w-5 h-5 stroke-[2.5px] transition-transform" />
 
-                    {/* Premium Animated Dot */}
+                    {/* Precision Animated Dot */}
                     <motion.div
-                        className="absolute top-2.5 w-1.5 h-1.5 bg-blue-600 rounded-full shadow-[0_0_8px_rgba(37,99,235,0.8)]"
-                        animate={{ opacity: [0, 1, 0], y: [0, 4, 0] }}
+                        className="absolute top-1.5 w-1 h-1 bg-slate-900 dark:bg-white rounded-full group-hover:bg-white dark:group-hover:bg-slate-900 shadow-sm"
+                        animate={{ opacity: [0, 1, 0], y: [0, 3, 0] }}
                         transition={{ duration: 2.5, repeat: Infinity, delay: 0.5 }}
                     />
                 </motion.div>
