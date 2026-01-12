@@ -35,7 +35,7 @@ export default function ScrollToTop() {
                     animate={{ opacity: 1, scale: 1, y: 0 }}
                     exit={{ opacity: 0, scale: 0.5, y: 20 }}
                     onClick={scrollToTop}
-                    className="fixed bottom-8 right-8 z-50 p-4 rounded-2xl glass-button border-white/20 shadow-2xl flex items-center justify-center group"
+                    className="fixed bottom-8 right-8 z-50 p-4 rounded-full glass-button border-white/20 shadow-2xl flex items-center justify-center group"
                     aria-label="Scroll to top"
                 >
                     <div className="relative">

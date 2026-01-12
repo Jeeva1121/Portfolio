@@ -2,7 +2,8 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Terminal, Mouse, Send } from "lucide-react";
+import { Terminal, Send } from "lucide-react";
+import ScrollIcon from "./ScrollIcon";
 import { Icon } from "@iconify/react";
 import { useState, useEffect } from "react";
 
@@ -128,26 +129,9 @@ export default function Hero() {
             </div>
 
             {/* Scroll Down Indicator */}
-            <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1, duration: 1 }}
-                className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2"
-            >
-                <a
-                    href="#about"
-                    className="group"
-                    aria-label="Scroll to About"
-                >
-                    <motion.div
-                        animate={{ y: [0, 8, 0] }}
-                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                        className="p-3 glass rounded-full text-blue-600 shadow-lg border-white/20 hover:scale-110 transition-transform"
-                    >
-                        <Mouse className="w-6 h-6" />
-                    </motion.div>
-                </a>
-            </motion.div>
+            <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20">
+                <ScrollIcon href="#about" label="Scroll to About" />
+            </div>
         </section>
     );
 }

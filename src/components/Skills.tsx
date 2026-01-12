@@ -4,7 +4,8 @@ import { motion } from "framer-motion";
 import GlassCard from "./GlassCard";
 import { Icon } from "@iconify/react";
 
-import { Layout, Server, Database, Cloud, Mouse } from "lucide-react";
+import { Layout, Server, Database, Cloud } from "lucide-react";
+import ScrollIcon from "./ScrollIcon";
 
 const skillCategories = [
     {
@@ -80,19 +81,7 @@ export default function Skills() {
 
             {/* Scroll to next section */}
             <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20">
-                <a
-                    href="#projects"
-                    className="group"
-                    aria-label="Scroll to Projects"
-                >
-                    <motion.div
-                        animate={{ y: [0, 8, 0] }}
-                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                        className="p-3 glass rounded-full text-blue-600 shadow-lg border-white/20 hover:scale-110 transition-transform"
-                    >
-                        <Mouse className="w-6 h-6" />
-                    </motion.div>
-                </a>
+                <ScrollIcon href="#projects" label="Scroll to Projects" />
             </div>
         </section>
     );

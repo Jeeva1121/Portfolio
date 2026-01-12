@@ -2,7 +2,8 @@
 
 import { motion } from "framer-motion";
 import GlassCard from "./GlassCard";
-import { GraduationCap, Briefcase, Mouse } from "lucide-react";
+import { GraduationCap, Briefcase } from "lucide-react";
+import ScrollIcon from "./ScrollIcon";
 import { Icon } from "@iconify/react";
 
 export default function About() {
@@ -139,19 +140,7 @@ export default function About() {
 
             {/* Scroll to next section */}
             <div className="absolute bottom-24 left-1/2 -translate-x-1/2 z-20">
-                <a
-                    href="#skills"
-                    className="group"
-                    aria-label="Scroll to Skills"
-                >
-                    <motion.div
-                        animate={{ y: [0, 8, 0] }}
-                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                        className="p-3 glass rounded-full text-blue-600 shadow-lg border-white/20 hover:scale-110 transition-transform"
-                    >
-                        <Mouse className="w-6 h-6" />
-                    </motion.div>
-                </a>
+                <ScrollIcon href="#skills" label="Scroll to Skills" />
             </div>
         </section>
     );
