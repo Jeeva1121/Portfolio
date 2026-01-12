@@ -18,7 +18,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
                     easing: (t) => (t === 1 ? 1 : 1 - (2 ** (-10 * t))),
                     orientation: "vertical",
                     gestureOrientation: "vertical",
-                    smoothWheel: true,
+                    smoothWheel: window.innerWidth > 768,
                     wheelMultiplier: 1,
                     infinite: false,
                 });
