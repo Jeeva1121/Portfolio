@@ -30,7 +30,7 @@ export default function ThemeToggle() {
     return (
         <button
             onClick={toggleTheme}
-            className="glass-button p-3! flex items-center justify-center hover:scale-110 active:scale-90 transition-all"
+            className="glass-button p-2.5! flex items-center justify-center hover:scale-110 active:scale-90 transition-all"
             aria-label="Toggle Theme"
         >
             {dark ? (

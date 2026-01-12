@@ -116,9 +116,7 @@ export default function Navbar() {
                 className="hidden md:flex fixed top-6 right-8 z-50 items-center gap-4"
             >
                 <div className="flex items-center gap-4">
-                    <div className="glass p-2 rounded-full shadow-lg border-white/10 flex items-center justify-center">
-                        <ThemeToggle />
-                    </div>
+                    <ThemeToggle />
                     <a
                         href="#contact"
                         className="glass-button py-2! px-6! text-sm font-bold rounded-full text-slate-900 dark:text-white whitespace-nowrap"
