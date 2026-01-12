@@ -16,7 +16,7 @@ const skillCategories = [
     },
     {
         title: "Backend",
-        icon: <Server className="w-6 h-6 text-white" />,
+        icon: <img src="https://img.icons8.com/?size=100&id=xM5NpnNBYbws&format=png&color=000000" alt="Backend" className="w-8 h-8 object-contain" />,
         skills: ["logos:nodejs-icon", "logos:nestjs", "logos:graphql", "logos:python", "logos:fastapi"],
         color: "from-emerald-500 to-teal-500"
     },
