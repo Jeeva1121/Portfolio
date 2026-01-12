@@ -23,6 +23,7 @@ export default function Navbar() {
             const currentScrollY = window.scrollY;
             if (currentScrollY > lastScrollY && currentScrollY > 100) {
                 setIsHidden(true);
+                setIsMobileMenuOpen(false);
             } else {
                 setIsHidden(false);
             }
@@ -83,7 +84,15 @@ export default function Navbar() {
             </motion.div>
 
             {/* Mobile Navigation - Right Corner Toggle */}
-            <div className="md:hidden fixed top-4 right-4 z-50 flex items-center gap-2">
+            <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                animate={{
+                    opacity: isHidden ? 0 : 1,
+                    x: isHidden ? 50 : 0,
+                    pointerEvents: isHidden ? "none" : "auto"
+                }}
+                className="md:hidden fixed top-4 right-4 z-50 flex items-center gap-2"
+            >
                 <ThemeToggle />
                 <button
                     onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -92,7 +101,7 @@ export default function Navbar() {
                 >
                     {isMobileMenuOpen ? <ChevronUp className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
                 </button>
-            </div>
+            </motion.div>
 
             {/* Mobile Menu Contents */}
             <AnimatePresence>
