@@ -12,25 +12,21 @@ const skillCategories = [
         title: "Frontend",
         icon: <img src="/skills/frontend.png" alt="Frontend" className="w-8 h-8 object-contain" />,
         skills: ["logos:react", "logos:nextjs-icon", "logos:typescript-icon", "logos:tailwindcss-icon", "logos:redux", "logos:framer"],
-        color: "from-blue-500 to-cyan-500"
     },
     {
         title: "Backend",
         icon: <img src="https://img.icons8.com/?size=100&id=xM5NpnNBYbws&format=png&color=000000" alt="Backend" className="w-8 h-8 object-contain" />,
         skills: ["logos:nodejs-icon", "logos:nestjs", "logos:graphql", "logos:python", "logos:fastapi"],
-        color: "from-emerald-500 to-teal-500"
     },
     {
         title: "Database",
         icon: <img src="/skills/database.png" alt="Database" className="w-8 h-8 object-contain" />,
         skills: ["logos:postgresql", "logos:prisma", "logos:mongodb-icon", "logos:redis", "logos:pinecone-icon"],
-        color: "from-violet-500 to-purple-500"
     },
     {
         title: "Cloud/DevOps",
         icon: <img src="/skills/cloud.png" alt="Cloud" className="w-8 h-8 object-contain" />,
         skills: ["logos:aws", "logos:docker-icon", "logos:kubernetes", "logos:github-actions", "logos:vercel-icon"],
-        color: "from-orange-500 to-amber-500"
     }
 ];
 
@@ -57,7 +53,7 @@ export default function Skills() {
                 >
                     {skillCategories.map((cat, idx) => (
                         <GlassCard key={cat.title} delay={idx * 0.1} className="flex flex-col h-full bg-white/80 dark:bg-white/5 shadow-2xl">
-                            <div className={`w-12 h-12 rounded-2xl bg-linear-to-br ${cat.color} mb-6 flex items-center justify-center shadow-lg border-white/20`}>
+                            <div className="w-12 h-12 rounded-2xl bg-slate-100 dark:bg-white/5 mb-6 flex items-center justify-center border border-slate-200 dark:border-white/10 shadow-sm">
                                 {cat.icon}
                             </div>
 
