@@ -10,7 +10,7 @@ import ScrollIcon from "./ScrollIcon";
 const skillCategories = [
     {
         title: "Frontend",
-        icon: <Layout className="w-6 h-6 text-white" />,
+        icon: <img src="/skills/frontend.png" alt="Frontend" className="w-8 h-8 object-contain" />,
         skills: ["logos:react", "logos:nextjs-icon", "logos:typescript-icon", "logos:tailwindcss-icon", "logos:redux", "logos:framer"],
         color: "from-blue-500 to-cyan-500"
     },
@@ -22,13 +22,13 @@ const skillCategories = [
     },
     {
         title: "Database",
-        icon: <Database className="w-6 h-6 text-white" />,
+        icon: <img src="/skills/database.png" alt="Database" className="w-8 h-8 object-contain" />,
         skills: ["logos:postgresql", "logos:prisma", "logos:mongodb-icon", "logos:redis", "logos:pinecone-icon"],
         color: "from-violet-500 to-purple-500"
     },
     {
         title: "Cloud/DevOps",
-        icon: <Cloud className="w-6 h-6 text-white" />,
+        icon: <img src="/skills/cloud.png" alt="Cloud" className="w-8 h-8 object-contain" />,
         skills: ["logos:aws", "logos:docker-icon", "logos:kubernetes", "logos:github-actions", "logos:vercel-icon"],
         color: "from-orange-500 to-amber-500"
     }
