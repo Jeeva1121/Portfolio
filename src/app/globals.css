@@ -8,10 +8,35 @@
   --radius-4xl: 48px;
   --radius-5xl: 64px;
 
-  --color-glass-light: rgba(255, 255, 255, 0.45);
-  --color-glass-dark: rgba(255, 255, 255, 0.1);
-  --color-glass-border-light: rgba(255, 255, 255, 0.5);
+  --color-glass-light: rgba(255, 255, 255, 0.8);
+  --color-glass-dark: rgba(255, 255, 255, 0.05);
+  --color-glass-border-light: rgba(203, 213, 225, 0.5);
   --color-glass-border-dark: rgba(255, 255, 255, 0.1);
+}
+
+html {
+  scroll-behavior: auto !important;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
 }
 
 @custom-variant dark (&:where(.dark, .dark *));

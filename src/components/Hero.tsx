@@ -2,7 +2,8 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { ArrowRight, Terminal } from "lucide-react";
+import { Terminal, Mouse, Send } from "lucide-react";
+import { Icon } from "@iconify/react";
 import { useState, useEffect } from "react";
 
 export default function Hero() {
@@ -34,7 +35,7 @@ export default function Hero() {
     }, [displayText, isDeleting, roleIndex]);
 
     return (
-        <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
+        <section id="home" className="relative min-h-screen flex items-center pt-20 overflow-hidden">
             {/* Background Orbs */}
             <div className="absolute top-1/4 -left-20 w-96 h-96 bg-blue-500/20 rounded-full blur-[128px]" />
             <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-violet-500/20 rounded-full blur-[128px]" />
@@ -65,13 +66,19 @@ export default function Hero() {
                         </p>
                     </div>
 
-                    <div className="flex flex-wrap gap-4 justify-center md:justify-start">
-                        <button className="px-6 md:px-8 py-3 md:py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-2xl shadow-lg shadow-blue-500/30 transition-all hover:scale-105 active:scale-95 flex items-center gap-2 text-base md:text-lg">
-                            View Projects <ArrowRight className="w-5 h-5" />
-                        </button>
-                        <button className="glass-button text-base md:text-lg px-6 py-3">
-                            Contact Me
-                        </button>
+                    <div className="flex flex-wrap gap-5 justify-center md:justify-start items-center">
+                        <a href="#contact" className="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-full shadow-lg shadow-blue-500/30 transition-all hover:scale-105 active:scale-95 flex items-center gap-2 text-lg">
+                            Let's Connect <Send className="w-5 h-5" />
+                        </a>
+
+                        <div className="flex items-center gap-4">
+                            <a href="https://github.com/jeevanantham-s" target="_blank" rel="noopener noreferrer" className="p-3.5 rounded-full hover:scale-110 transition-all border border-slate-200 dark:border-white/20 shadow-lg bg-white flex items-center justify-center">
+                                <Icon icon="logos:github-icon" width="24" height="24" />
+                            </a>
+                            <a href="https://linkedin.com/in/jeevanantham-s" target="_blank" rel="noopener noreferrer" className="p-3.5 glass rounded-full hover:scale-110 transition-all border-white/20 shadow-xl bg-white/10 dark:bg-white/5 flex items-center justify-center">
+                                <Icon icon="logos:linkedin-icon" width="24" height="24" />
+                            </a>
+                        </div>
                     </div>
                 </motion.div>
 
@@ -119,6 +126,28 @@ export default function Hero() {
                     />
                 </motion.div>
             </div>
+
+            {/* Scroll Down Indicator */}
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1, duration: 1 }}
+                className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2"
+            >
+                <a
+                    href="#about"
+                    className="group"
+                    aria-label="Scroll to About"
+                >
+                    <motion.div
+                        animate={{ y: [0, 8, 0] }}
+                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                        className="p-3 glass rounded-full text-blue-600 shadow-lg border-white/20 hover:scale-110 transition-transform"
+                    >
+                        <Mouse className="w-6 h-6" />
+                    </motion.div>
+                </a>
+            </motion.div>
         </section>
     );
 }

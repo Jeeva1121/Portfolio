@@ -2,18 +2,18 @@
 
 import { motion } from "framer-motion";
 import GlassCard from "./GlassCard";
-import { GraduationCap, Briefcase } from "lucide-react";
+import { GraduationCap, Briefcase, Mouse } from "lucide-react";
 import { Icon } from "@iconify/react";
 
 export default function About() {
     return (
-        <section id="about" className="py-24 relative overflow-hidden">
+        <section id="about" className="min-h-screen flex items-center py-24 relative overflow-hidden">
             <div className="container mx-auto px-6">
                 <div className="flex flex-col items-center mb-16">
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        className="text-4xl md:text-5xl font-bold mb-4 font-display"
+                        className="text-3xl md:text-4xl font-bold mb-4 font-display"
                     >
                         About Me
                     </motion.h2>
@@ -135,6 +135,23 @@ export default function About() {
                         </div>
                     </div>
                 </div>
+            </div>
+
+            {/* Scroll to next section */}
+            <div className="absolute bottom-24 left-1/2 -translate-x-1/2 z-20">
+                <a
+                    href="#skills"
+                    className="group"
+                    aria-label="Scroll to Skills"
+                >
+                    <motion.div
+                        animate={{ y: [0, 8, 0] }}
+                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                        className="p-3 glass rounded-full text-blue-600 shadow-lg border-white/20 hover:scale-110 transition-transform"
+                    >
+                        <Mouse className="w-6 h-6" />
+                    </motion.div>
+                </a>
             </div>
         </section>
     );
