@@ -73,10 +73,10 @@ export default function Hero() {
                         </a>
 
                         <div className="flex items-center gap-4">
-                            <a href="https://github.com/jeevanantham-s" target="_blank" rel="noopener noreferrer" className="p-3.5 rounded-full hover:scale-110 transition-all border border-slate-200 dark:border-white/20 shadow-lg bg-white flex items-center justify-center">
+                            <a href="https://github.com/Jeeva1121" target="_blank" rel="noopener noreferrer" className="p-3.5 rounded-full hover:scale-110 transition-all border border-slate-200 dark:border-white/20 shadow-lg bg-white flex items-center justify-center">
                                 <Icon icon="logos:github-icon" width="24" height="24" />
                             </a>
-                            <a href="https://linkedin.com/in/jeevanantham-s" target="_blank" rel="noopener noreferrer" className="p-3.5 glass rounded-full hover:scale-110 transition-all border-white/20 shadow-xl bg-white/10 dark:bg-white/5 flex items-center justify-center">
+                            <a href="https://www.linkedin.com/in/jeevanantham5b2a19324" target="_blank" rel="noopener noreferrer" className="p-3.5 glass rounded-full hover:scale-110 transition-all border-white/20 shadow-xl bg-white/10 dark:bg-white/5 flex items-center justify-center">
                                 <Icon icon="logos:linkedin-icon" width="24" height="24" />
                             </a>
                         </div>

@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import GlassCard from "./GlassCard";
-import { Mail, Send, MapPin, Phone } from "lucide-react";
+import { Mail, Send, MapPin } from "lucide-react";
 import { useState } from "react";
 
 export default function Contact() {
@@ -71,9 +71,8 @@ export default function Contact() {
 
                         <div className="space-y-8">
                             {[
-                                { icon: <Mail className="w-6 h-6" />, label: "Email Me", value: "hello@jeevan.dev", color: "text-emerald-500", bg: "bg-emerald-500/10" },
-                                { icon: <MapPin className="w-6 h-6" />, label: "Location", value: "Toronto, Canada", color: "text-blue-500", bg: "bg-blue-500/10" },
-                                { icon: <Phone className="w-6 h-6" />, label: "Phone", value: "+1 (555) 000-0000", color: "text-violet-500", bg: "bg-violet-500/10" }
+                                { icon: <Mail className="w-6 h-6" />, label: "Email Me", value: "jeevanantham1035@gmail.com", color: "text-emerald-500", bg: "bg-emerald-500/10" },
+                                { icon: <MapPin className="w-6 h-6" />, label: "Location", value: "Salem, Tamilnadu", color: "text-blue-500", bg: "bg-blue-500/10" }
                             ].map((item, i) => (
                                 <motion.div
                                     key={i}
