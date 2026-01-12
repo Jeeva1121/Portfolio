@@ -27,8 +27,8 @@ const projects = [
         color: "from-emerald-600/20 to-teal-600/20"
     },
     {
-        title: "Distributed RAG Engine",
-        desc: "Vector-search based knowledge retrieval system using Pinecone and LangChain.",
+        title: "Aura AI: Next-Gen RAG",
+        desc: "Next-generation cognitive processing system with a neural interface for advanced document research and audio intelligence.",
         tech: ["TypeScript", "NestJS", "Pinecone", "OpenAI"],
         github: "#",
         live: "#",
