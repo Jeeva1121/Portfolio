@@ -35,17 +35,10 @@ export default function ScrollToTop() {
                     animate={{ opacity: 1, scale: 1, y: 0 }}
                     exit={{ opacity: 0, scale: 0.5, y: 20 }}
                     onClick={scrollToTop}
-                    className="fixed bottom-8 right-8 z-50 p-4 rounded-full glass-button border-white/20 shadow-2xl flex items-center justify-center group"
+                    className="fixed bottom-8 right-8 z-50 w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center transition-all duration-300 hover:bg-blue-700 hover:scale-110 shadow-lg"
                     aria-label="Scroll to top"
                 >
-                    <div className="relative">
-                        <ChevronUp className="w-6 h-6 text-blue-600 transition-transform group-hover:-translate-y-1" />
-                        <motion.div
-                            className="absolute -inset-2 bg-blue-600/20 rounded-xl -z-10"
-                            animate={{ scale: [1, 1.2, 1] }}
-                            transition={{ duration: 2, repeat: Infinity }}
-                        />
-                    </div>
+                    <ChevronUp className="w-5 h-5 stroke-[3px]" />
                 </motion.button>
             )}
         </AnimatePresence>
