@@ -10,7 +10,7 @@ interface ScrollIconProps {
 
 export default function ScrollIcon({ href, label }: ScrollIconProps) {
     return (
-        <div className="flex flex-col items-center">
+        <div className="hidden md:flex flex-col items-center">
             <a
                 href={href}
                 className="group relative flex items-center justify-center w-10 h-10"
