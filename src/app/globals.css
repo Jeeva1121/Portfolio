@@ -109,3 +109,25 @@ html.lenis body {
     transform: scale(0.95);
   }
 }
+
+/* High-Performance Marquee */
+@keyframes marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee var(--duration, 40s) linear infinite;
+  will-change: transform;
+}
+
+.pause-on-hover:hover .animate-marquee {
+  animation-play-state: paused;
+}

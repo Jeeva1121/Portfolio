@@ -139,7 +139,7 @@ export default function About() {
             </div>
 
             {/* Scroll to next section */}
-            <div className="absolute bottom-24 left-1/2 -translate-x-1/2 z-20">
+            <div className="absolute bottom-20 left-1/2 -translate-x-1/2 z-20">
                 <ScrollIcon href="#skills" label="Scroll to Skills" />
             </div>
         </section>

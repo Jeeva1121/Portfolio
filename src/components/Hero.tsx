@@ -55,7 +55,7 @@ export default function Hero() {
 
                     <h1 className="text-4xl md:text-7xl font-bold leading-tight mb-6 tracking-tight">
                         <span className="text-slate-500 dark:text-slate-400 font-medium text-2xl md:text-4xl">Hi, I'm</span> <br />
-                        <span className="font-display bg-linear-to-br from-slate-950 via-blue-950 to-slate-950 dark:from-white dark:via-blue-200 dark:to-slate-300 bg-clip-text text-transparent">
+                        <span className="font-display bg-linear-to-br from-slate-950 via-blue-950 to-slate-950 dark:from-white dark:via-blue-200 dark:to-slate-300 bg-clip-text text-transparent md:-ml-3.5">
                             Jeevanantham S
                         </span>
                     </h1>
@@ -78,6 +78,9 @@ export default function Hero() {
                             </a>
                             <a href="https://www.linkedin.com/in/jeevanantham5b2a19324" target="_blank" rel="noopener noreferrer" className="p-3.5 glass rounded-full hover:scale-110 transition-all border-white/20 shadow-xl bg-white/10 dark:bg-white/5 flex items-center justify-center">
                                 <Icon icon="logos:linkedin-icon" width="24" height="24" />
+                            </a>
+                            <a href="mailto:jeevanantham1035@gmail.com" className="p-3.5 glass rounded-full hover:scale-110 transition-all border-white/20 shadow-xl bg-white/10 dark:bg-white/5 flex items-center justify-center">
+                                <Icon icon="logos:google-gmail" width="24" height="24" />
                             </a>
                         </div>
                     </div>
