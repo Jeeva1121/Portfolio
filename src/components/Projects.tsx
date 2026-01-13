@@ -32,7 +32,7 @@ const projects = [
         tech: ["TypeScript", "NestJS", "Pinecone", "OpenAI"],
         github: "#",
         live: "#",
-        image: "/projects/rag-engine.png",
+        image: "/projects/rag-engine-v2.png",
         color: "from-orange-600/20 to-amber-600/20"
     }
 ];
