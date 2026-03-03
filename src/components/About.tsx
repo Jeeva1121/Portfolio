@@ -8,7 +8,7 @@ import { Icon } from "@iconify/react";
 
 export default function About() {
     return (
-        <section id="about" className="min-h-screen flex items-center py-24 relative overflow-hidden">
+        <section id="about" className="min-h-screen flex items-center py-24 bg-white dark:bg-black relative overflow-hidden">
             <div className="container mx-auto px-6">
                 <div className="flex flex-col items-center mb-16">
                     <motion.h2

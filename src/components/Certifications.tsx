@@ -66,6 +66,9 @@ export default function Certifications() {
 
     return (
         <section id="certifications" className="min-h-screen py-16 md:py-24 bg-slate-50/50 dark:bg-black relative overflow-hidden">
+            {/* Background Orbs */}
+            <div className="absolute top-1/2 -right-20 w-80 h-80 bg-emerald-500/5 dark:bg-emerald-500/2 rounded-full blur-[120px] animate-pulse" />
+            <div className="absolute bottom-0 -left-20 w-80 h-80 bg-indigo-500/5 dark:bg-indigo-500/2 rounded-full blur-[120px] animate-pulse" />
             <div className="container mx-auto px-6">
                 <div className="flex flex-col items-center mb-10 md:mb-16 text-center">
                     <motion.h2

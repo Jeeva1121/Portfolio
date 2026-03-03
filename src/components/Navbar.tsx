@@ -17,8 +17,13 @@ export default function Navbar() {
     const [isHidden, setIsHidden] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [lastScrollY, setLastScrollY] = useState(0);
+    const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
+        setIsMobile(window.innerWidth <= 768);
+        const handleResize = () => setIsMobile(window.innerWidth <= 768);
+        window.addEventListener("resize", handleResize);
+
         const handleScroll = () => {
             const currentScrollY = window.scrollY;
             if (window.innerWidth > 768 && currentScrollY > lastScrollY && currentScrollY > 100) {
@@ -31,7 +36,10 @@ export default function Navbar() {
         };
 
         window.addEventListener("scroll", handleScroll, { passive: true });
-        return () => window.removeEventListener("scroll", handleScroll);
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+            window.removeEventListener("resize", handleResize);
+        };
     }, [lastScrollY]);
 
     return (
@@ -87,9 +95,9 @@ export default function Navbar() {
             <motion.div
                 initial={{ opacity: 0, x: 50 }}
                 animate={{
-                    opacity: (window.innerWidth <= 768) ? 1 : (isHidden ? 0 : 1),
-                    x: (window.innerWidth <= 768) ? 0 : (isHidden ? 50 : 0),
-                    pointerEvents: (window.innerWidth <= 768) ? "auto" : (isHidden ? "none" : "auto")
+                    opacity: isMobile ? 1 : (isHidden ? 0 : 1),
+                    x: isMobile ? 0 : (isHidden ? 50 : 0),
+                    pointerEvents: isMobile ? "auto" : (isHidden ? "none" : "auto")
                 }}
                 className="md:hidden fixed top-4 right-4 z-999 flex items-center gap-2"
             >

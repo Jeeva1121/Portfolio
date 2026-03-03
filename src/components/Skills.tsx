@@ -77,7 +77,10 @@ const skillCategories = [
 
 export default function Skills() {
     return (
-        <section id="skills" className="min-h-screen flex items-center py-24 bg-slate-50/50 dark:bg-black relative">
+        <section id="skills" className="min-h-screen flex items-center py-24 bg-[#f0f9ff]/50 dark:bg-black relative overflow-hidden">
+            {/* Background Orbs */}
+            <div className="absolute top-1/4 -right-20 w-[600px] h-[600px] bg-indigo-500/5 dark:bg-indigo-500/2 rounded-full blur-[140px] animate-pulse" />
+            <div className="absolute bottom-1/4 -left-20 w-[600px] h-[600px] bg-cyan-500/5 dark:bg-cyan-500/2 rounded-full blur-[140px] animate-pulse" />
             <div className="container mx-auto px-6">
                 <div className="flex flex-col items-center mb-16">
                     <motion.h2

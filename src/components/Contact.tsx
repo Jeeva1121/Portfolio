@@ -37,10 +37,10 @@ export default function Contact() {
     };
 
     return (
-        <section id="contact" className="min-h-screen flex items-center py-16 md:py-24 relative overflow-hidden">
+        <section id="contact" className="min-h-screen flex items-center py-16 md:py-24 bg-slate-50/50 dark:bg-black relative overflow-hidden">
             {/* Background Orbs */}
-            <div className="absolute top-1/4 -right-20 w-96 h-96 bg-emerald-500/20 rounded-full blur-[128px] animate-pulse" />
-            <div className="absolute bottom-1/4 -left-20 w-96 h-96 bg-blue-500/20 rounded-full blur-[128px] animate-pulse" />
+            <div className="absolute top-1/4 -right-20 w-96 h-96 bg-emerald-500/8 dark:bg-emerald-500/2 rounded-full blur-[128px] animate-pulse" />
+            <div className="absolute bottom-1/4 -left-20 w-96 h-96 bg-blue-500/8 dark:bg-blue-500/2 rounded-full blur-[128px] animate-pulse" />
 
             <div className="container mx-auto px-6 relative z-10">
                 <div className="flex flex-col items-center mb-10 md:mb-12">

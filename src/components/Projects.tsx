@@ -42,7 +42,10 @@ const projects = [
 
 export default function Projects() {
     return (
-        <section id="projects" className="min-h-screen flex items-center py-24 relative">
+        <section id="projects" className="min-h-screen flex items-center py-24 bg-[#fdfaff]/50 dark:bg-black relative overflow-hidden">
+            {/* Background Orbs */}
+            <div className="absolute top-1/2 -left-32 w-[700px] h-[700px] bg-violet-600/5 dark:bg-violet-600/2 rounded-full blur-[160px] animate-pulse" />
+            <div className="absolute bottom-0 -right-32 w-[600px] h-[600px] bg-blue-600/5 dark:bg-blue-600/2 rounded-full blur-[160px] animate-pulse" />
             <div className="container mx-auto px-6">
                 <div className="flex flex-col items-center mb-16">
                     <motion.h2
