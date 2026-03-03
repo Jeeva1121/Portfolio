@@ -82,10 +82,10 @@ export default function Certifications() {
                     <div className="w-20 h-1.5 bg-blue-600 rounded-full" />
                 </div>
 
-                <div className="relative group/marquee pause-on-hover py-4 md:py-10">
+                <div className="relative group/marquee pause-on-hover py-4 md:py-10 overflow-x-auto scrollbar-hide">
                     <div
-                        className="animate-marquee flex gap-6 md:gap-8 whitespace-nowrap will-change-transform scrollbar-hide"
-                        style={{ "--duration": "25s", touchAction: 'pan-y' } as any}
+                        className="animate-marquee flex gap-6 md:gap-8 whitespace-nowrap will-change-transform"
+                        style={{ "--duration": "25s" } as any}
                     >
                         {[...certs, ...certs, ...certs].map((cert, idx) => (
                             <div

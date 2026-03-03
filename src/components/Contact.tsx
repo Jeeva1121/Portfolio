@@ -62,7 +62,7 @@ export default function Contact() {
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
                     >
-                        <h3 className="text-3xl md:text-4xl font-bold mb-6 md:mb-8 leading-tight text-center md:text-left">
+                        <h3 className="text-2xl md:text-4xl font-bold mb-6 md:mb-8 leading-tight text-center md:text-left">
                             Ready to bring your <br className="hidden md:block" />
                             <span className="text-blue-600 dark:text-blue-400">vision to life?</span>
                         </h3>

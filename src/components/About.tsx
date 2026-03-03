@@ -15,7 +15,7 @@ export default function About() {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-3xl md:text-4xl font-bold mb-4 font-display"
+                        className="text-2xl md:text-5xl font-bold mb-4 font-display text-slate-900 dark:text-white"
                     >
                         About Me
                     </motion.h2>

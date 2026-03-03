@@ -21,7 +21,7 @@ export default function GlassCard({ children, className, delay = 0 }: GlassCardP
                 delay,
                 ease: [0.21, 0.47, 0.32, 0.98] as [number, number, number, number]
             }}
-            className={cn("glass-card p-8 group overflow-hidden", className)}
+            className={cn("glass-card p-5 md:p-8 group overflow-hidden", className)}
         >
             {/* Subtle glow effect on hover */}
             <div className="absolute inset-0 bg-linear-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />

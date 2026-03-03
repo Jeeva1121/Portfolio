@@ -52,7 +52,7 @@ export default function Projects() {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-3xl md:text-4xl font-bold mb-4 font-display text-slate-900 dark:text-white"
+                        className="text-2xl md:text-5xl font-bold mb-4 font-display text-slate-900 dark:text-white text-center"
                     >
                         Featured Projects
                     </motion.h2>
@@ -71,7 +71,7 @@ export default function Projects() {
                             delay={idx * 0.1}
                             className="relative flex flex-col rounded-4xl! shadow-xl hover:shadow-2xl bg-white/80 dark:bg-white/5"
                         >
-                            <div className="relative h-56 sm:h-64 w-full overflow-hidden rounded-3xl! mb-6 shadow-inner">
+                            <div className="relative h-44 w-full overflow-hidden rounded-3xl! mb-6 shadow-inner">
                                 <Image
                                     src={project.image}
                                     alt={project.title}
@@ -83,8 +83,8 @@ export default function Projects() {
                             </div>
 
                             <div className="px-2 grow flex flex-col">
-                                <h3 className="text-2xl font-bold mb-3 text-slate-900 dark:text-white">{project.title}</h3>
-                                <p className="text-slate-500 dark:text-slate-400 mb-6 line-clamp-3">
+                                <h3 className="text-lg md:text-2xl font-bold mb-3 text-slate-900 dark:text-white">{project.title}</h3>
+                                <p className="text-sm md:text-base text-slate-500 dark:text-slate-400 mb-6 line-clamp-3">
                                     {project.desc}
                                 </p>
 

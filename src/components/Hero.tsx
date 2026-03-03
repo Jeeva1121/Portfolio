@@ -11,6 +11,14 @@ export default function Hero() {
     const [roleIndex, setRoleIndex] = useState(0);
     const [displayText, setDisplayText] = useState("");
     const [isDeleting, setIsDeleting] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        setIsMobile(window.innerWidth <= 768);
+        const handleResize = () => setIsMobile(window.innerWidth <= 768);
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
 
     const roles = ["Software Developer", "Fullstack Developer", "Java Developer"];
     const typingSpeed = isDeleting ? 50 : 100;
@@ -87,8 +95,8 @@ export default function Hero() {
                 </motion.div>
 
                 <motion.div
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
+                    initial={{ opacity: 0, scale: 0.6 }}
+                    animate={{ opacity: 1, scale: isMobile ? 0.7 : 1 }}
                     transition={{ duration: 1, ease: "easeOut" }}
                     className="relative"
                 >
