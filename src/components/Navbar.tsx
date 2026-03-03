@@ -21,7 +21,7 @@ export default function Navbar() {
     useEffect(() => {
         const handleScroll = () => {
             const currentScrollY = window.scrollY;
-            if (currentScrollY > lastScrollY && currentScrollY > 100) {
+            if (window.innerWidth > 768 && currentScrollY > lastScrollY && currentScrollY > 100) {
                 setIsHidden(true);
                 setIsMobileMenuOpen(false);
             } else {
@@ -35,7 +35,7 @@ export default function Navbar() {
     }, [lastScrollY]);
 
     return (
-        <div className="contents">
+        <>
             {/* Desktop Navigation - Centered Pill */}
             <motion.nav
                 initial={{ y: -100, opacity: 0 }}
@@ -87,11 +87,11 @@ export default function Navbar() {
             <motion.div
                 initial={{ opacity: 0, x: 50 }}
                 animate={{
-                    opacity: isHidden ? 0 : 1,
-                    x: isHidden ? 50 : 0,
-                    pointerEvents: isHidden ? "none" : "auto"
+                    opacity: (window.innerWidth <= 768) ? 1 : (isHidden ? 0 : 1),
+                    x: (window.innerWidth <= 768) ? 0 : (isHidden ? 50 : 0),
+                    pointerEvents: (window.innerWidth <= 768) ? "auto" : (isHidden ? "none" : "auto")
                 }}
-                className="md:hidden fixed top-4 right-4 z-50 flex items-center gap-2"
+                className="md:hidden fixed top-4 right-4 z-999 flex items-center gap-2"
             >
                 <ThemeToggle />
                 <button
@@ -110,7 +110,7 @@ export default function Navbar() {
                         initial={{ opacity: 0, scale: 0.9, y: -20 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.9, y: -20 }}
-                        className="md:hidden fixed top-20 right-4 z-40 w-48 glass rounded-2xl shadow-2xl border-white/20 overflow-hidden"
+                        className="md:hidden fixed top-20 right-4 z-1000 w-48 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-slate-200 dark:border-white/10 overflow-hidden"
                     >
                         <div className="flex flex-col p-2">
                             {navItems.map((item) => (
@@ -136,6 +136,6 @@ export default function Navbar() {
                     </motion.div>
                 )}
             </AnimatePresence>
-        </div>
+        </>
     );
 }

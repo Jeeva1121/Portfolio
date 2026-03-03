@@ -15,18 +15,11 @@ export default function GlassCard({ children, className, delay = 0 }: GlassCardP
         <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: "-80px" }}
             transition={{
-                duration: 0.8,
+                duration: 0.6,
                 delay,
-                ease: [0.21, 0.47, 0.32, 0.98]
-            }}
-            whileHover={{
-                y: -10,
-                scale: 1.03,
-                rotateX: 2,
-                rotateY: -2,
-                transition: { duration: 0.3, ease: "easeOut" }
+                ease: [0.21, 0.47, 0.32, 0.98] as [number, number, number, number]
             }}
             className={cn("glass-card p-8 group overflow-hidden", className)}
         >

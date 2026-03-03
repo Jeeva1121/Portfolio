@@ -9,30 +9,33 @@ import { Icon } from "@iconify/react";
 
 const projects = [
     {
-        title: "AI Infrastructure Platform",
-        desc: "A high-concurrency platform for orchestrating LLM workloads. Built with Next.js, FastAPI, and Kubernetes.",
-        tech: ["Next.js", "Python", "Docker", "Redis"],
-        github: "#",
-        live: "#",
-        image: "/projects/ai-platform.png",
+        title: "Hack@JIT 1.0",
+        desc: "A full-stack hackathon management platform built for a real 24-hour college event — featuring team registration, UPI payments, admin dashboard with live stats, and automated email notifications.",
+        tech: ["React", "Node.js", "Firebase", "Nodemailer"],
+        github: "https://github.com/hackjit01-hue/hackathon-hack-jit",
+        live: "https://hackathon-hack-jit-1-0.vercel.app/",
+        image: "/projects/hackjit.png",
+        imageClass: "",
         color: "from-blue-600/20 to-violet-600/20"
     },
     {
-        title: "Real-time Fintech Dashboard",
-        desc: "Streaming financial data visualization with sub-50ms latency. Leveraging WebSockets and Go.",
-        tech: ["React", "Go", "PostgreSQL", "Kafka"],
-        github: "#",
-        live: "#",
-        image: "/projects/fintech.png",
+        title: "WebCraft",
+        desc: "A high-performance luxury agency landing page with a GPU-accelerated animation pipeline and 3D interactive galleries. Optimized for 60fps across all devices.",
+        tech: ["Next.js 14", "Tailwind", "Framer Motion", "OGL"],
+        github: "https://github.com/Jeeva1121/Requirement-Page",
+        live: "https://requirement-page.vercel.app/",
+        image: "/projects/webcraft.png",
+        imageClass: "",
         color: "from-emerald-600/20 to-teal-600/20"
     },
     {
-        title: "Aura AI: Next-Gen RAG",
-        desc: "Next-generation cognitive processing system with a neural interface for advanced document research and audio intelligence.",
-        tech: ["TypeScript", "NestJS", "Pinecone", "OpenAI"],
-        github: "#",
-        live: "#",
-        image: "/projects/rag-engine-v2.png",
+        title: "Lumina AI",
+        desc: "A stateless RAG system using JIT context injection — documents are parsed on-the-fly and streamed to Groq's Llama 3 70B via SSE, with zero vector database overhead.",
+        tech: ["Next.js", "React 19", "Groq", "Vercel"],
+        github: "https://github.com/Jeeva1121/Portfolio",
+        live: "https://rag-app-mu.vercel.app/",
+        image: "/projects/lumina-ai.png",
+        imageClass: "brightness-110 scale-90 object-contain",
         color: "from-orange-600/20 to-amber-600/20"
     }
 ];
@@ -56,7 +59,7 @@ export default function Projects() {
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
-                    className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
                 >
                     {projects.map((project, idx) => (
                         <GlassCard
@@ -64,14 +67,15 @@ export default function Projects() {
                             delay={idx * 0.1}
                             className="relative flex flex-col rounded-4xl! shadow-xl hover:shadow-2xl bg-white/80 dark:bg-white/5"
                         >
-                            <div className="relative h-56 w-full overflow-hidden rounded-3xl! mb-6">
+                            <div className="relative h-56 sm:h-64 w-full overflow-hidden rounded-3xl! mb-6 shadow-inner">
                                 <Image
                                     src={project.image}
                                     alt={project.title}
                                     fill
-                                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                    priority={idx === 0}
+                                    className={`object-cover transition-transform duration-700 group-hover:scale-115 ${project.imageClass}`}
                                 />
-                                <div className="absolute inset-0 bg-linear-to-t from-slate-900/40 to-transparent" />
                             </div>
 
                             <div className="px-2 grow flex flex-col">

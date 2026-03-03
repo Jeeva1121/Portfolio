@@ -3,31 +3,76 @@
 import { motion } from "framer-motion";
 import GlassCard from "./GlassCard";
 import { Icon } from "@iconify/react";
-
-import { Layout, Server, Database, Cloud } from "lucide-react";
 import ScrollIcon from "./ScrollIcon";
 
 const skillCategories = [
     {
-        title: "Frontend",
-        icon: <img src="/skills/frontend.png" alt="Frontend" className="w-8 h-8 object-contain" />,
-        skills: ["logos:react", "logos:nextjs-icon", "logos:typescript-icon", "logos:tailwindcss-icon", "logos:redux", "logos:framer"],
+        title: "Languages & Frameworks",
+        icon: <img src="/skills/frontend.png" alt="Languages & Frameworks" className="w-8 h-8 object-contain" />,
+        skills: [
+            "logos:java",
+            "logos:javascript",
+            "logos:react",
+            "logos:nextjs-icon",
+            "logos:nodejs-icon",
+            "skill-icons:expressjs-dark",
+            "logos:html-5",
+            "logos:css-3",
+        ],
     },
     {
-        title: "Backend",
-        icon: <img src="https://img.icons8.com/?size=100&id=xM5NpnNBYbws&format=png&color=000000" alt="Backend" className="w-8 h-8 object-contain" />,
-        skills: ["logos:nodejs-icon", "logos:nestjs", "logos:graphql", "logos:python", "logos:fastapi"],
+        title: "Libraries",
+        icon: <img src="/skills/library.svg" alt="Libraries" className="w-8 h-8 object-contain" />,
+        skills: [
+            "logos:react-query-icon",
+            "logos:tailwindcss-icon",
+            "logos:bootstrap",
+            "logos:material-ui",
+            "simple-icons:langchain",
+        ],
     },
     {
         title: "Database",
         icon: <img src="/skills/database.png" alt="Database" className="w-8 h-8 object-contain" />,
-        skills: ["logos:postgresql", "logos:prisma", "logos:mongodb-icon", "logos:redis", "logos:pinecone-icon"],
+        skills: [
+            "logos:mongodb-icon",
+            "logos:mysql-icon",
+            "logos:prisma",
+        ],
     },
     {
-        title: "Cloud/DevOps",
-        icon: <img src="/skills/cloud.png" alt="Cloud" className="w-8 h-8 object-contain" />,
-        skills: ["logos:aws", "logos:docker-icon", "logos:kubernetes", "logos:github-actions", "logos:vercel-icon"],
-    }
+        title: "Tools & Platforms",
+        icon: <Icon icon="noto:hammer-and-wrench" width="32" height="32" />,
+        skills: [
+            "logos:git-icon",
+            "logos:github-icon",
+            "logos:visual-studio-code",
+            "logos:postman-icon",
+            "logos:vercel-icon",
+            "logos:chrome",
+        ],
+    },
+    {
+        title: "Concepts",
+        icon: <Icon icon="noto:light-bulb" width="32" height="32" />,
+        skills: [
+            "noto:globe-with-meridians",
+            "noto:locked-with-key",
+            "noto:package",
+        ],
+        labels: [
+            "RESTful APIs",
+            "JWT Auth",
+            "OOP",
+        ],
+    },
+    {
+        title: "AI & Cloud",
+        icon: <img src="/skills/cloud.png" alt="AI & Cloud" className="w-8 h-8 object-contain" />,
+        skills: [
+            "logos:aws",
+        ],
+    },
 ];
 
 export default function Skills() {
@@ -38,6 +83,8 @@ export default function Skills() {
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5 }}
                         className="text-3xl md:text-4xl font-bold mb-4 font-display text-slate-900 dark:text-white"
                     >
                         Technical Expertise
@@ -49,25 +96,29 @@ export default function Skills() {
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
-                    className="grid md:grid-cols-2 gap-8"
+                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
                 >
                     {skillCategories.map((cat, idx) => (
-                        <GlassCard key={cat.title} delay={idx * 0.1} className="flex flex-col h-full bg-white/80 dark:bg-white/5 shadow-2xl">
-                            <div className="w-12 h-12 rounded-2xl bg-slate-100 dark:bg-white/5 mb-6 flex items-center justify-center border border-slate-200 dark:border-white/10 shadow-sm">
+                        <GlassCard key={cat.title} delay={idx * 0.08} className="flex flex-col h-full bg-white/80 dark:bg-white/5 shadow-2xl">
+                            <div className="w-12 h-12 rounded-2xl bg-slate-100 dark:bg-white/5 mb-5 flex items-center justify-center border border-slate-200 dark:border-white/10 shadow-sm">
                                 {cat.icon}
                             </div>
 
-                            <h3 className="text-2xl font-bold mb-6 text-slate-900 dark:text-white">{cat.title}</h3>
+                            <h3 className="text-xl md:text-2xl font-bold mb-5 text-slate-900 dark:text-white">{cat.title}</h3>
 
-                            <div className="flex flex-wrap gap-4 mt-auto">
-                                {cat.skills.map((skill) => (
-                                    <motion.div
+                            <div className="flex flex-wrap gap-3">
+                                {cat.skills.map((skill, i) => (
+                                    <div
                                         key={skill}
-                                        whileHover={{ scale: 1.2, rotate: 5 }}
-                                        className="p-3 glass rounded-2xl border-white/20 shadow-md cursor-pointer"
+                                        className="skill-pill p-3 glass rounded-2xl border-white/20 shadow-md cursor-pointer flex flex-col items-center gap-1.5"
                                     >
                                         <Icon icon={skill} width="32" height="32" />
-                                    </motion.div>
+                                        {cat.labels && cat.labels[i] && (
+                                            <span className="text-[10px] font-semibold text-slate-600 dark:text-slate-300 whitespace-nowrap" style={{ fontFamily: 'var(--font-poppins)' }}>
+                                                {cat.labels[i]}
+                                            </span>
+                                        )}
+                                    </div>
                                 ))}
                             </div>
                         </GlassCard>

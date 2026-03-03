@@ -14,6 +14,7 @@ export default function About() {
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
                         className="text-3xl md:text-4xl font-bold mb-4 font-display"
                     >
                         About Me
@@ -25,6 +26,7 @@ export default function About() {
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}
                         whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
                         transition={{ duration: 0.8, ease: "easeOut" }}
                     >
                         <p className="text-lg leading-relaxed text-slate-600 dark:text-slate-400 mb-16 font-sans border-l-4 border-blue-600 pl-6 italic">
@@ -106,7 +108,7 @@ export default function About() {
                                 {
                                     company: "SUVID Solutions Private Limited",
                                     role: "Full Stack Web Developer Intern",
-                                    duration: "Sep 2025 – Dec 2025",
+                                    duration: "Jun 2025 – Nov 2025",
                                     sub: "Full-cycle Development & API Integration"
                                 }
                             ].map((exp, i) => (

@@ -65,12 +65,13 @@ const certs: Cert[] = [
 export default function Certifications() {
 
     return (
-        <section id="certifications" className="min-h-screen flex items-center py-24 bg-slate-50/50 dark:bg-black overflow-hidden relative">
+        <section id="certifications" className="min-h-screen py-16 md:py-24 bg-slate-50/50 dark:bg-black relative overflow-hidden">
             <div className="container mx-auto px-6">
-                <div className="flex flex-col items-center mb-16 text-center">
+                <div className="flex flex-col items-center mb-10 md:mb-16 text-center">
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
                         className="text-3xl md:text-5xl font-bold mb-4 font-display text-slate-900 dark:text-white tracking-tight"
                     >
                         Professional Certifications
@@ -78,16 +79,15 @@ export default function Certifications() {
                     <div className="w-20 h-1.5 bg-blue-600 rounded-full" />
                 </div>
 
-                <div className="relative overflow-visible group/marquee pause-on-hover">
-
+                <div className="relative group/marquee pause-on-hover py-4 md:py-10">
                     <div
-                        className="animate-marquee flex gap-8 whitespace-nowrap will-change-transform scrollbar-hide md:overflow-visible overflow-x-auto"
-                        style={{ "--duration": "35s" } as any}
+                        className="animate-marquee flex gap-6 md:gap-8 whitespace-nowrap will-change-transform scrollbar-hide"
+                        style={{ "--duration": "25s", touchAction: 'pan-y' } as any}
                     >
                         {[...certs, ...certs, ...certs].map((cert, idx) => (
                             <div
                                 key={idx}
-                                className="inline-flex flex-col items-center glass-card p-7 min-w-[300px] shadow-2xl bg-white/80 dark:bg-white/5 border border-white/20 transition-all duration-500 hover:scale-[1.02] hover:bg-white dark:hover:bg-white/10"
+                                className="inline-flex flex-col items-center glass-card p-6 md:p-8 min-w-[260px] md:min-w-[320px] shadow-2xl bg-white/80 dark:bg-white/5 border border-white/20 transition-all duration-500 hover:scale-[1.03]"
                             >
                                 <div className="w-[72px] h-[72px] flex items-center justify-center mb-5 transition-all duration-500 group-hover:scale-110">
                                     {cert.imagePath ? (
@@ -134,6 +134,6 @@ export default function Certifications() {
             <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20">
                 <ScrollIcon href="#contact" label="Scroll to Contact" />
             </div>
-        </section>
+        </section >
     );
 }
