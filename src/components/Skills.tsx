@@ -8,7 +8,7 @@ import ScrollIcon from "./ScrollIcon";
 const skillCategories = [
     {
         title: "Languages & Frameworks",
-        icon: <img src="/skills/frontend.png" alt="Languages & Frameworks" className="w-8 h-8 object-contain" />,
+        icon: <img src="/skills/frontend.png" alt="Languages & Frameworks" className="w-7 h-7 object-contain" />,
         skills: [
             "logos:java",
             "logos:javascript",
@@ -22,7 +22,7 @@ const skillCategories = [
     },
     {
         title: "Libraries",
-        icon: <img src="/skills/library.svg" alt="Libraries" className="w-8 h-8 object-contain" />,
+        icon: <img src="/skills/library.svg" alt="Libraries" className="w-7 h-7 object-contain" />,
         skills: [
             "logos:react-query-icon",
             "logos:tailwindcss-icon",
@@ -33,7 +33,7 @@ const skillCategories = [
     },
     {
         title: "Database",
-        icon: <img src="/skills/database.png" alt="Database" className="w-8 h-8 object-contain" />,
+        icon: <img src="/skills/database.png" alt="Database" className="w-7 h-7 object-contain" />,
         skills: [
             "logos:mongodb-icon",
             "logos:mysql-icon",
@@ -42,7 +42,7 @@ const skillCategories = [
     },
     {
         title: "Tools & Platforms",
-        icon: <Icon icon="noto:hammer-and-wrench" width="32" height="32" />,
+        icon: <Icon icon="noto:hammer-and-wrench" width="28" height="28" />,
         skills: [
             "logos:git-icon",
             "logos:github-icon",
@@ -54,7 +54,7 @@ const skillCategories = [
     },
     {
         title: "Concepts",
-        icon: <Icon icon="noto:light-bulb" width="32" height="32" />,
+        icon: <Icon icon="noto:light-bulb" width="28" height="28" />,
         skills: [
             "noto:globe-with-meridians",
             "noto:locked-with-key",
@@ -67,8 +67,8 @@ const skillCategories = [
         ],
     },
     {
-        title: "AI & Cloud",
-        icon: <img src="/skills/cloud.png" alt="AI & Cloud" className="w-8 h-8 object-contain" />,
+        title: "Cloud",
+        icon: <img src="/skills/cloud.png" alt="Cloud" className="w-7 h-7 object-contain" />,
         skills: [
             "logos:aws",
         ],
@@ -99,7 +99,7 @@ export default function Skills() {
                     className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
                 >
                     {skillCategories.map((cat, idx) => (
-                        <GlassCard key={cat.title} delay={idx * 0.08} className="flex flex-col h-full bg-white/80 dark:bg-white/5 shadow-2xl">
+                        <GlassCard key={cat.title} delay={idx * 0.08} className="flex flex-col h-full bg-white/95 dark:bg-white/8 shadow-2xl border-white/40 dark:border-white/10">
                             <div className="w-12 h-12 rounded-2xl bg-slate-100 dark:bg-white/5 mb-5 flex items-center justify-center border border-slate-200 dark:border-white/10 shadow-sm">
                                 {cat.icon}
                             </div>
