@@ -143,7 +143,7 @@ export default function Contact() {
                             <button
                                 type="submit"
                                 disabled={status === "sending" || status === "sent"}
-                                className={`w-[82%] md:w-full mx-auto py-3.5 md:py-5 text-base md:text-lg font-bold flex items-center justify-center gap-4 rounded-full transition-all duration-500 shadow-xl relative overflow-hidden group/btn ${status === "sent"
+                                className={`w-[68%] md:w-full mx-auto py-3.5 md:py-5 text-base md:text-lg font-bold flex items-center justify-center gap-4 rounded-full transition-all duration-500 shadow-xl relative overflow-hidden group/btn ${status === "sent"
                                     ? "bg-emerald-600 text-white"
                                     : status === "error"
                                         ? "bg-rose-600 text-white"

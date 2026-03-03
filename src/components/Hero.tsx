@@ -76,7 +76,7 @@ export default function Hero() {
                     </div>
 
                     <div className="flex flex-wrap gap-5 justify-center md:justify-start items-center">
-                        <a href="#contact" className="px-5 md:px-8 py-2.5 md:py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-full shadow-lg shadow-blue-500/30 transition-all hover:scale-105 active:scale-95 flex items-center gap-2 text-[13px] md:text-lg">
+                        <a href="#contact" className="px-6 md:px-8 py-3 md:py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-full shadow-lg shadow-blue-500/30 transition-all hover:scale-105 active:scale-95 flex items-center gap-2 text-[15px] md:text-lg">
                             Let's Connect <Send className="w-4 h-4 md:w-5 md:h-5" />
                         </a>
 
