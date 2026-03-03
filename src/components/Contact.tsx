@@ -47,6 +47,7 @@ export default function Contact() {
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
                         className="text-3xl md:text-5xl font-bold mb-4 font-display text-slate-900 dark:text-white text-center"
                     >
                         Let's <span className="bg-linear-to-r from-emerald-600 to-blue-600 bg-clip-text text-transparent">Connect</span>
@@ -58,6 +59,7 @@ export default function Contact() {
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}
                         whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
                     >
                         <h3 className="text-3xl md:text-4xl font-bold mb-6 md:mb-8 leading-tight text-center md:text-left">
