@@ -96,7 +96,7 @@ export default function Hero() {
 
                 <motion.div
                     initial={{ opacity: 0, scale: 0.6 }}
-                    animate={{ opacity: 1, scale: isMobile ? 0.7 : 1 }}
+                    animate={{ opacity: 1, scale: isMobile ? 0.8 : 1 }}
                     transition={{ duration: 1, ease: "easeOut" }}
                     className="relative"
                 >

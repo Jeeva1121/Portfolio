@@ -62,13 +62,13 @@ export default function About() {
                                         <GlassCard className="p-6 md:p-8 border-white/10 group-hover/edu:border-blue-500/30 group-hover/edu:translate-x-1 transition-all duration-500" delay={0.1 * i}>
                                             <div className="flex flex-wrap items-start justify-between gap-4">
                                                 <div>
-                                                    <h4 className="text-xl font-extrabold text-slate-950 dark:text-white mb-1">
+                                                    <h4 className="text-lg md:text-xl font-extrabold text-slate-950 dark:text-white mb-1">
                                                         {edu.school}
                                                     </h4>
-                                                    <p className="text-blue-600 dark:text-blue-400 font-bold text-lg mb-2">
+                                                    <p className="text-base md:text-lg text-blue-600 dark:text-blue-400 font-bold mb-2">
                                                         {edu.degree}
                                                     </p>
-                                                    <p className="text-sm text-slate-500 dark:text-slate-400 font-medium italic">
+                                                    <p className="text-xs md:text-sm text-slate-500 dark:text-slate-400 font-medium italic">
                                                         {edu.highlights}
                                                     </p>
                                                 </div>

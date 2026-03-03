@@ -102,7 +102,7 @@ export default function Skills() {
                     className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
                 >
                     {skillCategories.map((cat, idx) => (
-                        <GlassCard key={cat.title} delay={idx * 0.08} className="flex flex-col h-full bg-white/95 dark:bg-white/8 shadow-2xl border-white/40 dark:border-white/10">
+                        <GlassCard key={cat.title} delay={idx * 0.08} className="flex flex-col h-full bg-white/95 dark:bg-white/8 shadow-2xl border-white/40 dark:border-white/10 p-6 md:p-8">
                             <div className="w-12 h-12 rounded-2xl bg-slate-100 dark:bg-white/5 mb-5 flex items-center justify-center border border-slate-200 dark:border-white/10 shadow-sm">
                                 {cat.icon}
                             </div>

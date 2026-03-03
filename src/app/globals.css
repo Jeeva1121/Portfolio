@@ -165,6 +165,15 @@ html.lenis body {
   box-shadow: 0 6px 16px -3px rgba(255, 255, 255, 0.06);
 }
 
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 /* ── Accessibility: respect reduced motion ── */
 @media (prefers-reduced-motion: reduce) {
 
