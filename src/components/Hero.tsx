@@ -56,9 +56,9 @@ export default function Hero() {
                     transition={{ duration: 0.8, ease: "easeOut" }}
                     className="md:pl-8 lg:pl-12 text-center md:text-left pt-12 md:pt-0"
                 >
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-6 border-white/20">
-                        <Terminal className="w-4 h-4 text-blue-500" />
-                        <span className="text-xs md:text-sm font-medium">Available for Hiring</span>
+                    <div className="inline-flex items-center gap-2 px-3 md:px-4 py-1.5 md:py-2 rounded-full glass mb-2 md:mb-6 border-white/20">
+                        <Terminal className="w-3.5 h-3.5 md:w-4 md:h-4 text-blue-500" />
+                        <span className="text-[11px] md:text-sm font-medium">Available for Hiring</span>
                     </div>
 
                     <h1 className="text-4xl md:text-7xl font-bold leading-tight mb-6 tracking-tight">
@@ -76,8 +76,8 @@ export default function Hero() {
                     </div>
 
                     <div className="flex flex-wrap gap-5 justify-center md:justify-start items-center">
-                        <a href="#contact" className="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-full shadow-lg shadow-blue-500/30 transition-all hover:scale-105 active:scale-95 flex items-center gap-2 text-lg">
-                            Let's Connect <Send className="w-5 h-5" />
+                        <a href="#contact" className="px-5 md:px-8 py-2.5 md:py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-full shadow-lg shadow-blue-500/30 transition-all hover:scale-105 active:scale-95 flex items-center gap-2 text-[13px] md:text-lg">
+                            Let's Connect <Send className="w-4 h-4 md:w-5 md:h-5" />
                         </a>
 
                         <div className="flex items-center gap-4">
