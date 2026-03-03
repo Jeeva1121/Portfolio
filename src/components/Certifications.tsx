@@ -87,7 +87,7 @@ export default function Certifications() {
                         className="animate-marquee flex gap-6 md:gap-8 whitespace-nowrap will-change-transform"
                         style={{ "--duration": "25s" } as any}
                     >
-                        {[...certs, ...certs].map((cert, idx) => (
+                        {[...certs, ...certs, ...certs, ...certs, ...certs, ...certs].map((cert, idx) => (
                             <div
                                 key={idx}
                                 className="inline-flex flex-col items-center glass-card p-6 md:p-8 min-w-[260px] md:min-w-[320px] shadow-2xl bg-white/80 dark:bg-white/5 border border-white/20 transition-all duration-500 hover:scale-[1.03]"

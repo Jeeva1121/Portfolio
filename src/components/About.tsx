@@ -90,7 +90,7 @@ export default function About() {
                     </motion.div>
 
                     <div className="flex flex-col gap-10">
-                        <h3 className="text-2xl font-bold flex items-center gap-4 text-slate-900 dark:text-white">
+                        <h3 className="text-xl font-bold flex items-center gap-4 text-slate-900 dark:text-white">
                             <span className="p-1.5 bg-violet-50 dark:bg-violet-900/20 rounded-xl shadow-sm border border-violet-100 dark:border-violet-800/30">
                                 <Icon icon="noto:briefcase" className="w-9 h-9" />
                             </span>
@@ -116,13 +116,13 @@ export default function About() {
                                     <GlassCard className="p-6 md:p-8 border-white/10 group-hover/exp:border-blue-500/30 group-hover/exp:translate-x-1 transition-all duration-500" delay={0.1 * i}>
                                         <div className="flex flex-wrap items-start justify-between gap-4">
                                             <div>
-                                                <h4 className="text-xl font-extrabold text-slate-950 dark:text-white mb-1">
+                                                <h4 className="text-lg md:text-xl font-extrabold text-slate-950 dark:text-white mb-1">
                                                     {exp.role}
                                                 </h4>
-                                                <p className="text-blue-600 dark:text-blue-400 font-bold text-lg mb-2 capitalize">
+                                                <p className="text-base md:text-lg text-blue-600 dark:text-blue-400 font-bold mb-2 capitalize">
                                                     {exp.company}
                                                 </p>
-                                                <p className="text-sm text-slate-500 dark:text-slate-400 font-medium italic">
+                                                <p className="text-xs md:text-sm text-slate-500 dark:text-slate-400 font-medium italic">
                                                     {exp.sub}
                                                 </p>
                                             </div>

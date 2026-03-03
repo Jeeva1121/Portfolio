@@ -107,7 +107,7 @@ export default function Skills() {
                                 {cat.icon}
                             </div>
 
-                            <h3 className="text-lg md:text-2xl font-bold mb-5 text-slate-900 dark:text-white">{cat.title}</h3>
+                            <h3 className="text-xl md:text-2xl font-bold mb-5 text-slate-900 dark:text-white">{cat.title}</h3>
 
                             <div className="flex flex-wrap gap-2 md:gap-3">
                                 {cat.skills.map((skill, i) => (
@@ -117,7 +117,7 @@ export default function Skills() {
                                     >
                                         <Icon icon={skill} width="24" height="24" className="md:w-8 md:h-8" />
                                         {cat.labels && cat.labels[i] && (
-                                            <span className="text-[10px] font-semibold text-slate-600 dark:text-slate-300 whitespace-nowrap" style={{ fontFamily: 'var(--font-poppins)' }}>
+                                            <span className="text-[11px] md:text-xs font-semibold text-slate-600 dark:text-slate-300 whitespace-nowrap" style={{ fontFamily: 'var(--font-poppins)' }}>
                                                 {cat.labels[i]}
                                             </span>
                                         )}
