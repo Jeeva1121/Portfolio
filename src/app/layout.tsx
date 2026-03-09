@@ -20,8 +20,8 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Senior Full-Stack Engineer | Portfolio",
-  description: "Senior Full-Stack Engineer specializing in high-concurrency React applications and scalable Node.js microservices.",
+  title: "Portfolio",
+  description: "Full-Stack Engineer specializing in high-concurrency React applications and scalable Node.js microservices.",
 };
 
 export default function RootLayout({
