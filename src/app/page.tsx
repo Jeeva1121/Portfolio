@@ -9,19 +9,25 @@ import ScrollToTop from "@/components/ScrollToTop";
 
 export default function Home() {
   return (
-    <main className="relative">
+    <main className="relative bg-[#fafafa] text-slate-900 min-h-screen font-sans selection:bg-slate-900 selection:text-white">
       <Navbar />
+      
+      {/* Editorial Flow */}
       <Hero />
       <About />
-      <Skills />
       <Projects />
+      <Skills />
       <Certifications />
       <Contact />
+      
       <ScrollToTop />
 
-      <footer className="py-12 border-t border-white/10 text-center text-slate-500 dark:text-slate-400">
+      {/* Minimal Footer */}
+      <footer className="py-12 border-t border-black/5 text-center bg-[#fafafa] text-slate-500">
         <div className="container mx-auto px-6">
-          <p>© 2026 JS. Developed with Precision & Glassmorphism.</p>
+          <p className="text-xs md:text-sm font-medium tracking-widest uppercase">
+            © 2026 Jeevanantham S. Creative Developer.
+          </p>
         </div>
       </footer>
     </main>

@@ -1,147 +1,146 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence, useMotionValue, useSpring, useTransform, Variants } from "framer-motion";
+
+import { useEffect, useState } from "react";
 import Image from "next/image";
-import { Terminal, Send } from "lucide-react";
-import ScrollIcon from "./ScrollIcon";
-import { Icon } from "@iconify/react";
-import { useState, useEffect } from "react";
+import AnimatedButton from "./AnimatedButton";
+
+const roles = [
+    "Software Engineer.",
+    "Web Developer."
+];
+
+const subtitleText = "I build responsive, secure, and user-centric web platforms with a focus on modern aesthetics and high performance.";
+const subtitleWords = subtitleText.split(" ");
 
 export default function Hero() {
     const [roleIndex, setRoleIndex] = useState(0);
-    const [displayText, setDisplayText] = useState("");
-    const [isDeleting, setIsDeleting] = useState(false);
-    const [isMobile, setIsMobile] = useState(false);
+
+    // Parallax mouse tracking
+    const mouseX = useMotionValue(0);
+    const mouseY = useMotionValue(0);
+    
+    const smoothX = useSpring(mouseX, { damping: 50, stiffness: 400 });
+    const smoothY = useSpring(mouseY, { damping: 50, stiffness: 400 });
+
+    const imageX = useTransform(smoothX, [-0.5, 0.5], [-35, 35]);
+    const imageY = useTransform(smoothY, [-0.5, 0.5], [-35, 35]);
+    
+    const glowX = useTransform(smoothX, [-0.5, 0.5], [-80, 80]);
+    const glowY = useTransform(smoothY, [-0.5, 0.5], [-80, 80]);
 
     useEffect(() => {
-        setIsMobile(window.innerWidth <= 768);
-        const handleResize = () => setIsMobile(window.innerWidth <= 768);
-        window.addEventListener("resize", handleResize);
-        return () => window.removeEventListener("resize", handleResize);
+        const interval = setInterval(() => {
+            setRoleIndex((prev) => (prev + 1) % roles.length);
+        }, 4000);
+        return () => clearInterval(interval);
     }, []);
 
-    const roles = ["Software Developer", "Fullstack Developer", "Java Developer"];
-    const typingSpeed = isDeleting ? 50 : 100;
+    const handleMouseMove = (e: React.MouseEvent) => {
+        if (typeof window !== "undefined") {
+            const x = (e.clientX / window.innerWidth) - 0.5;
+            const y = (e.clientY / window.innerHeight) - 0.5;
+            mouseX.set(x);
+            mouseY.set(y);
+        }
+    };
 
-    useEffect(() => {
-        const currentRole = roles[roleIndex];
-        const timer = setTimeout(() => {
-            if (!isDeleting) {
-                setDisplayText(currentRole.substring(0, displayText.length + 1));
-                if (displayText.length === currentRole.length) {
-                    setTimeout(() => setIsDeleting(true), 2000);
-                }
-            } else {
-                setDisplayText(currentRole.substring(0, displayText.length - 1));
-                if (displayText.length === 0) {
-                    setIsDeleting(false);
-                    setRoleIndex((roleIndex + 1) % roles.length);
-                }
+    const containerVariants: Variants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.05,
+                delayChildren: 0.2
             }
-        }, typingSpeed);
+        }
+    };
 
-        return () => clearTimeout(timer);
-    }, [displayText, isDeleting, roleIndex]);
+    const wordVariants: Variants = {
+        hidden: { opacity: 0, y: 20 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } }
+    };
 
     return (
-        <section id="home" className="relative min-h-screen flex items-center pt-20 overflow-hidden">
-            {/* Background Orbs */}
-            <div className="absolute top-1/4 -left-20 w-96 h-96 bg-blue-500/20 rounded-full blur-[128px]" />
-            <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-violet-500/20 rounded-full blur-[128px]" />
+        <section id="home" onMouseMove={handleMouseMove} className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-[#fafafa]">
+            
+            {/* Ambient Glow Parallax */}
+            <motion.div 
+                style={{ x: glowX, y: glowY }}
+                className="hidden md:block absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-linear-to-b from-blue-200/40 to-transparent blur-[120px] rounded-full -z-10" 
+            />
 
-            <div className="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center relative z-10">
-                <motion.div
-                    initial={{ opacity: 0, x: -50 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
-                    className="md:pl-8 lg:pl-12 text-center md:text-left pt-12 md:pt-0"
+            <div className="container mx-auto px-6 relative z-10 pt-20 sm:pt-32 pb-16 flex flex-col items-center justify-center text-center">
+                
+                {/* Massive Animated Role */}
+                <div className="flex items-center justify-center mb-6 w-full min-h-[100px] sm:min-h-[120px] md:min-h-[160px]">
+                    <AnimatePresence mode="popLayout">
+                        <motion.h1 
+                            key={roleIndex}
+                            initial={{ opacity: 0, x: -50 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            exit={{ opacity: 0, x: 50 }}
+                            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                            className="text-[2.5rem] sm:text-6xl md:text-[5rem] lg:text-[6rem] font-black tracking-tighter leading-tight sm:leading-tight font-poppins text-transparent bg-clip-text bg-linear-to-br from-slate-900 via-slate-800 to-slate-500 px-4 py-4 max-w-full"
+                        >
+                            {roles[roleIndex]}
+                        </motion.h1>
+                    </AnimatePresence>
+                </div>
+
+                {/* Staggered Subtitle */}
+                <motion.p
+                    variants={containerVariants}
+                    initial="hidden"
+                    animate="visible"
+                    className="text-lg sm:text-xl text-slate-500 max-w-2xl font-medium leading-relaxed mb-10 flex flex-wrap justify-center gap-x-1.5"
                 >
-                    <div className="inline-flex items-center gap-2 px-3 md:px-4 py-1.5 md:py-2 rounded-full glass mb-2 md:mb-6 border-white/20">
-                        <Terminal className="w-3.5 h-3.5 md:w-4 md:h-4 text-blue-500" />
-                        <span className="text-[11px] md:text-sm font-medium">Available for Hiring</span>
-                    </div>
+                    {subtitleWords.map((word, idx) => (
+                        <motion.span key={idx} variants={wordVariants}>
+                            {word}
+                        </motion.span>
+                    ))}
+                </motion.p>
 
-                    <h1 className="text-4xl md:text-7xl font-bold leading-tight mb-6 tracking-tight">
-                        <span className="text-slate-500 dark:text-slate-400 font-medium text-2xl md:text-4xl">Hi, I'm</span> <br />
-                        <span className="font-display bg-linear-to-br from-slate-950 via-blue-950 to-slate-950 dark:from-white dark:via-blue-200 dark:to-slate-300 bg-clip-text text-transparent md:-ml-3.5">
-                            Jeevanantham S
-                        </span>
-                    </h1>
-
-                    <div className="h-10 md:h-12 mb-8 md:mb-10">
-                        <p className="text-xl md:text-3xl font-medium text-slate-700 dark:text-slate-300 font-sans tracking-wide">
-                            {displayText}
-                            <span className="inline-block w-0.5 h-6 md:h-7 bg-blue-600 dark:bg-blue-400 ml-1 animate-pulse" />
-                        </p>
-                    </div>
-
-                    <div className="flex flex-wrap gap-5 justify-center md:justify-start items-center">
-                        <a href="#contact" className="px-6 md:px-8 py-3 md:py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-full shadow-lg shadow-blue-500/30 transition-all hover:scale-105 active:scale-95 flex items-center gap-2 text-[15px] md:text-lg">
-                            Let's Connect <Send className="w-4 h-4 md:w-5 md:h-5" />
-                        </a>
-
-                        <div className="flex items-center gap-4">
-                            <a href="https://github.com/Jeeva1121" target="_blank" rel="noopener noreferrer" className="p-3.5 rounded-full hover:scale-110 transition-all border border-slate-200 dark:border-white/20 shadow-lg bg-white flex items-center justify-center">
-                                <Icon icon="logos:github-icon" width="24" height="24" />
-                            </a>
-                            <a href="https://www.linkedin.com/in/jeevanantham5b2a19324" target="_blank" rel="noopener noreferrer" className="p-3.5 glass rounded-full hover:scale-110 transition-all border-white/20 shadow-xl bg-white/10 dark:bg-white/5 flex items-center justify-center">
-                                <Icon icon="logos:linkedin-icon" width="24" height="24" />
-                            </a>
-                            <a href="mailto:jeevanantham1035@gmail.com" className="p-3.5 glass rounded-full hover:scale-110 transition-all border-white/20 shadow-xl bg-white/10 dark:bg-white/5 flex items-center justify-center">
-                                <Icon icon="logos:google-gmail" width="24" height="24" />
-                            </a>
-                        </div>
-                    </div>
+                {/* Elegant Buttons */}
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                    className="flex flex-col sm:flex-row items-center gap-6 mb-16"
+                >
+                    <AnimatedButton href="#projects" text="View My Work" />
+                    <AnimatedButton href="/resume.pdf" text="Download Resume" target="_blank" rel="noopener noreferrer" className="bg-[#1c1c1c]! border-[#333333]! hover:bg-[#2a2a2a]! hover:border-[#444444]! active:border-[#333333]!" />
                 </motion.div>
 
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.6 }}
-                    animate={{ opacity: 1, scale: isMobile ? 0.8 : 1 }}
-                    transition={{ duration: 1, ease: "easeOut" }}
-                    className="relative"
+                {/* Centered Image with Mouse Parallax & Float */}
+                <motion.div 
+                    initial={{ opacity: 0, scale: 0.9, y: 50 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    transition={{ duration: 1.2, delay: 0.5, type: "spring", bounce: 0.2 }}
+                    className="relative w-full max-w-[320px] sm:max-w-[420px] lg:max-w-[500px] aspect-square -mt-4 sm:-mt-8"
                 >
-                    <motion.div
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{
-                            opacity: 1,
-                            x: 0,
-                            y: [0, -20, 0]
-                        }}
-                        transition={{
-                            duration: 0.8,
-                            delay: 0.2,
-                            y: {
-                                duration: 4,
-                                repeat: Infinity,
-                                ease: "easeInOut"
-                            }
-                        }}
-                        className="relative z-10 md:ml-4 lg:ml-8"
+                    <motion.div 
+                        style={{ x: imageX, y: imageY }}
+                        className="w-full h-full relative"
                     >
-                        <div className="relative max-w-[600px] w-full">
-                            <Image
-                                src="/hero-custom-transparent.png"
-                                alt="Senior Full-Stack Engineer"
-                                width={800}
-                                height={800}
+                        <motion.div 
+                            animate={{ y: [0, -20, 0] }} 
+                            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                            className="w-full h-full relative"
+                        >
+                            <Image 
+                                src="/hero-img.png" 
+                                alt="Jeevanantham S." 
+                                fill 
+                                className="object-contain drop-shadow-[0_45px_45px_rgba(0,0,0,0.2)]"
                                 priority
-                                className="w-full h-auto object-contain drop-shadow-2xl"
                             />
-                        </div>
+                        </motion.div>
                     </motion.div>
-
-                    {/* Decorative Elements */}
-                    <motion.div
-                        animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.5, 0.3] }}
-                        transition={{ duration: 4, repeat: Infinity }}
-                        className="absolute -top-10 -right-10 w-40 h-40 bg-blue-500/30 rounded-full blur-3xl -z-10"
-                    />
                 </motion.div>
-            </div>
 
-            {/* Scroll Down Indicator */}
-            <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20">
-                <ScrollIcon href="#about" label="Scroll to About" />
             </div>
         </section>
     );

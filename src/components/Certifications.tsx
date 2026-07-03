@@ -1,142 +1,213 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { ExternalLink } from "lucide-react";
+import { motion, Variants } from "framer-motion";
 import { Icon } from "@iconify/react";
-import ScrollIcon from "./ScrollIcon";
-import Image from "next/image";
+import { useRef, useState, useEffect } from "react";
 
-interface Cert {
-    name: string;
-    issuer: string;
-    logo?: string;
-    imagePath?: string;
-    customLogo?: React.ReactNode;
-    pdfUrl: string;
-}
-
-const certs: Cert[] = [
-    {
-        name: "Frontend Web Developer",
-        issuer: "Udemy",
-        logo: "logos:udemy-icon",
-        pdfUrl: "https://drive.google.com/file/d/1gyNR0LGL2TZK0lkLkopBg9WaId51SfEs/view"
-    },
+const certs = [
     {
         name: "OCI AI Foundations",
         issuer: "Oracle University",
-        customLogo: (
-            <svg viewBox="0 0 24 24" className="w-14 h-14" xmlns="http://www.w3.org/2000/svg">
-                <path fill="#ea1b22" d="M10.4 12.46h1.55l-.82-1.32-1.5 2.39h-.69l1.83-2.87c.08-.12.21-.19.36-.19s.28.07.35.18l1.84 2.81h-.69l-.32-.53h-1.57l-.34-.53Zm7.12.53v-2.49h-.58v2.73c0 .08.03.15.08.21.06.05.13.08.22.08h2.65l.34-.53h-2.71ZM7.89 12.55c.57 0 1.02-.46 1.02-1.02s-.46-1.02-1.02-1.02H5.34v3h.58v-2.49h1.93c.27 0 .49.22.49.49s-.22.49-.49.49l-1.64 0 1.74 1.51h.85l-1.17-.98h.27Zm-6.13.98c-.83 0-1.51-.68-1.51-1.51s.68-1.51 1.51-1.51h1.76c.83 0 1.51.68 1.51 1.51s-.68 1.51-1.51 1.51H1.76Zm1.72-.53c.54 0 .98-.44.98-.98s-.44-.98-.98-.98H1.8c-.54 0-.98.44-.98.98s.44.98.98.98h1.68ZM14.53 13.53c-.83 0-1.51-.68-1.51-1.51s.68-1.51 1.51-1.51h2.09l-.34.53h-1.71c-.54 0-.98.44-.98.98s.44.98.98.98h2.1l-.34.53h-1.79Zm7.12-.53c-.45 0-.83-.3-.94-.71h2.49l.34-.53h-2.83c.12-.41.5-.71.94-.71h1.71l.35-.53h-2.06c-.84 0-1.51.68-1.51 1.51s.68 1.51 1.51 1.51h1.79l.34-.53h-2.1Z" />
-            </svg>
-        ),
-        pdfUrl: "https://drive.google.com/file/d/1PgP82LdPdiNFr3V8UF0ns2KnGRRMa5Zz/view"
-    },
-    {
-        name: "Java Programming",
-        issuer: "Infosys Springboard",
-        imagePath: "/certifications/infosys-logo.png",
-        pdfUrl: "https://drive.google.com/file/d/1oQTJBOxSu6jdFxMmsdVQLiyLfK6dlbs_/view"
-    },
-    {
-        name: "Software Engineering",
-        issuer: "Accenture",
-        customLogo: (
-            <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className="w-8 h-8">
-                <path d="m0.66 16.95 13.242-4.926L0.66 6.852V0l22.68 9.132v5.682L0.66 24Z" fill="#c907f1" />
-            </svg>
-        ),
-        pdfUrl: "https://drive.google.com/file/d/1LE1fwcNyFXeC6E4RsSw_8jtiBRMS2rG0/view"
-    },
-    {
-        name: "Java Full Stack",
-        issuer: "Wipro",
-        imagePath: "/certifications/wipro-brand.png",
-        pdfUrl: "https://drive.google.com/file/d/1i10fIVx8Gn90hzNTY00IqIXx0Z60RgVB/view"
+        link: "https://drive.google.com/file/d/1PgP82LdPdiNFr3V8UF0ns2KnGRRMa5Zz/view",
+        icon: "logos:oracle"
     },
     {
         name: "AI Agents Intensive",
         issuer: "Google & Kaggle",
-        logo: "logos:google-icon",
-        pdfUrl: "https://drive.google.com/file/d/1CsUkx3g3xD_gJAl0Unsd_OUfGnguo80n/view"
+        link: "https://drive.google.com/file/d/1CsUkx3g3xD_gJAl0Unsd_OUfGnguo80n/view",
+        icon: "logos:google-icon"
+    },
+    {
+        name: "Java Programming",
+        issuer: "Infosys Springboard",
+        link: "https://drive.google.com/file/d/1oQTJBOxSu6jdFxMmsdVQLiyLfK6dlbs_/view",
+        icon: "https://cdn.brandfetch.io/id2jVuQy_9/theme/dark/logo.svg?c=1bxid64Mup7aczewSAYMX&t=1676271043735"
+    },
+    {
+        name: "Software Engineering",
+        issuer: "Accenture",
+        link: "https://drive.google.com/file/d/1LE1fwcNyFXeC6E4RsSw_8jtiBRMS2rG0/view",
+        icon: "simple-icons:accenture"
+    },
+    {
+        name: "Frontend Web Developer",
+        issuer: "Udemy",
+        link: "https://drive.google.com/file/d/1gyNR0LGL2TZK0lkLkopBg9WaId51SfEs/view",
+        icon: "logos:udemy-icon"
+    },
+    {
+        name: "TalentNext Program",
+        issuer: "Wipro",
+        link: "https://drive.google.com/file/d/1i10fIVx8Gn90hzNTY00IqIXx0Z60RgVB/view",
+        icon: "simple-icons:wipro"
+    },
+    {
+        name: "AWS Cloud Essentials",
+        issuer: "Amazon Web Services",
+        link: "#",
+        icon: "logos:aws"
+    },
+    {
+        name: "Extended Reality Technology",
+        issuer: "NPTEL",
+        link: "https://drive.google.com/file/d/1xHLKNcSgfT55pkin0NfTvaXHnsGQY0TV/view",
+        icon: "https://cdn.brandfetch.io/id_7zyHL2W/w/400/h/400/theme/dark/icon.jpeg?c=1bxid64Mup7aczewSAYMX&t=1781744208280"
     },
 ];
 
 export default function Certifications() {
+    const scrollRef = useRef<HTMLDivElement>(null);
+    const [progress, setProgress] = useState(0);
+
+    const checkScroll = () => {
+        const el = scrollRef.current;
+        if (!el) return;
+        const maxScroll = el.scrollWidth - el.clientWidth;
+        if (maxScroll > 0) {
+            setProgress(el.scrollLeft / maxScroll);
+        } else {
+            setProgress(0);
+        }
+    };
+
+    useEffect(() => {
+        const el = scrollRef.current;
+        if (!el) return;
+        checkScroll();
+        // Set a small timeout to allow layout to settle before initial check
+        setTimeout(checkScroll, 100);
+        el.addEventListener("scroll", checkScroll, { passive: true });
+        window.addEventListener("resize", checkScroll);
+        return () => {
+            el.removeEventListener("scroll", checkScroll);
+            window.removeEventListener("resize", checkScroll);
+        };
+    }, []);
+
+    const scrollToDot = (idx: number) => {
+        const el = scrollRef.current;
+        if (!el) return;
+        const maxScroll = el.scrollWidth - el.clientWidth;
+        const targetScroll = (idx / (certs.length - 1)) * maxScroll;
+        el.scrollTo({ left: targetScroll, behavior: "smooth" });
+    };
 
     return (
-        <section id="certifications" className="min-h-screen py-16 md:py-24 bg-slate-50/50 dark:bg-black relative overflow-hidden">
-            {/* Background Orbs */}
-            <div className="absolute top-1/2 -right-20 w-80 h-80 bg-emerald-500/5 dark:bg-emerald-500/2 rounded-full blur-[120px] animate-pulse" />
-            <div className="absolute bottom-0 -left-20 w-80 h-80 bg-indigo-500/5 dark:bg-indigo-500/2 rounded-full blur-[120px] animate-pulse" />
-            <div className="container mx-auto px-6">
-                <div className="flex flex-col items-center mb-10 md:mb-16 text-center">
-                    <motion.h2
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-3xl md:text-5xl font-bold mb-4 font-display text-slate-900 dark:text-white tracking-tight"
+        <section className="py-32 bg-white relative overflow-hidden">
+            <div className="container mx-auto px-6 max-w-7xl relative z-10">
+                
+                {/* Header */}
+                <div className="text-center mb-16">
+                    <motion.div
+                        initial={{ opacity: 0, x: -50 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true, margin: "-50px" }}
+                        transition={{ duration: 0.5 }}
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100 text-blue-700 font-semibold text-sm mb-6"
+                    >
+                        <Icon icon="lucide:award" className="w-4 h-4" /> Achievements
+                    </motion.div>
+                    <motion.h2 
+                        initial={{ opacity: 0, x: 50 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true, margin: "-50px" }}
+                        transition={{ duration: 0.6, delay: 0.1 }}
+                        className="text-4xl md:text-5xl font-bold text-slate-900 mb-4 font-poppins"
                     >
                         Professional Certifications
                     </motion.h2>
-                    <div className="w-20 h-1.5 bg-blue-600 rounded-full" />
+                    <motion.div
+                        initial={{ scaleX: 0 }}
+                        whileInView={{ scaleX: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6, delay: 0.3 }}
+                        className="w-16 h-1 bg-blue-500 rounded-full mx-auto"
+                    />
                 </div>
 
-                <div className="relative group/marquee pause-on-hover py-4 md:py-10 overflow-x-auto scrollbar-hide">
+                {/* Carousel Container */}
+                <div className="relative">
+
+
+                    {/* Left fade */}
+                    <div className={`absolute left-0 top-0 bottom-0 w-16 bg-linear-to-r from-white to-transparent z-10 pointer-events-none transition-opacity duration-300 ${progress > 0.05 ? "opacity-100" : "opacity-0"}`} />
+                    {/* Right fade */}
+                    <div className={`absolute right-0 top-0 bottom-0 w-16 bg-linear-to-l from-white to-transparent z-10 pointer-events-none transition-opacity duration-300 ${progress < 0.95 ? "opacity-100" : "opacity-0"}`} />
+
+                    {/* Scrollable Track */}
                     <div
-                        className="animate-marquee flex gap-6 md:gap-8 whitespace-nowrap will-change-transform"
-                        style={{ "--duration": "25s" } as any}
+                        ref={scrollRef}
+                        className="flex gap-6 overflow-x-auto pb-6 pt-2 px-2 snap-x snap-mandatory scrollbar-hide"
+                        style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
                     >
-                        {[...certs, ...certs, ...certs, ...certs, ...certs, ...certs].map((cert, idx) => (
-                            <div
-                                key={idx}
-                                className="inline-flex flex-col items-center glass-card p-6 md:p-8 min-w-[260px] md:min-w-[320px] shadow-2xl bg-white/80 dark:bg-white/5 border border-white/20 transition-all duration-500 hover:scale-[1.03]"
+                        {certs.map((cert, idx) => (
+                            <motion.div
+                                key={cert.name}
+                                initial={{ opacity: 0, y: 40 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, margin: "-30px" }}
+                                transition={{ duration: 0.5, delay: idx * 0.08 }}
+                                className="snap-start shrink-0"
                             >
-                                <div className="w-[72px] h-[72px] flex items-center justify-center mb-5 transition-all duration-500 group-hover:scale-110">
-                                    {cert.imagePath ? (
-                                        <div className="relative w-full h-full p-4 bg-white/50 dark:bg-white rounded-full shadow-sm border-[0.5px] border-slate-100 dark:border-white/20">
-                                            <Image
-                                                src={cert.imagePath}
-                                                alt={cert.issuer}
-                                                fill
-                                                className="object-contain p-4"
-                                            />
-                                        </div>
-                                    ) : cert.customLogo ? (
-                                        <div className="p-2 w-full h-full flex items-center justify-center bg-white/50 dark:bg-white rounded-full backdrop-blur-sm shadow-sm border-[0.5px] border-slate-100 dark:border-white/20">
-                                            {cert.customLogo}
-                                        </div>
-                                    ) : (
-                                        <div className="p-2 w-full h-full flex items-center justify-center bg-white/50 dark:bg-white rounded-full backdrop-blur-sm shadow-sm border-[0.5px] border-slate-100 dark:border-white/20">
-                                            <Icon icon={cert.logo!} width="36" height="36" />
-                                        </div>
-                                    )}
+                                <div className="bg-white rounded-[2.5rem] w-[260px] h-[260px] sm:w-[280px] sm:h-[280px] border border-slate-900/20 p-6 flex flex-col items-center justify-center text-center hover:shadow-[0_12px_40px_rgb(0,0,0,0.1)] transition-all duration-300 group hover:-translate-y-1">
+                                    
+                                    {/* Logo */}
+                                    <div className="w-16 h-16 bg-slate-50 rounded-full border border-slate-100 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 overflow-hidden">
+                                        {cert.icon.startsWith('http') ? (
+                                            <img src={cert.icon} alt={cert.issuer} className="w-10 h-10 object-contain mix-blend-multiply" />
+                                        ) : (
+                                            <Icon icon={cert.icon} className="w-8 h-8 text-slate-700" />
+                                        )}
+                                    </div>
+
+                                    {/* Name */}
+                                    <h3 className="text-lg font-bold text-slate-900 font-poppins mb-2 leading-snug">
+                                        {cert.name}
+                                    </h3>
+
+                                    {/* Issuer */}
+                                    <p className="text-sm text-slate-500 font-medium mb-6">
+                                        {cert.issuer}
+                                    </p>
+
+                                    {/* View Certificate Button */}
+                                    <a
+                                        href={cert.link}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="mt-auto inline-flex items-center gap-2 px-5 py-2.5 rounded-full border-2 border-blue-500 text-blue-600 font-semibold text-sm hover:bg-blue-500 hover:text-white transition-all duration-300 group-hover:border-blue-600"
+                                    >
+                                        View Certificate
+                                        <Icon icon="lucide:external-link" className="w-3.5 h-3.5" />
+                                    </a>
                                 </div>
-                                <h3 className="text-lg font-bold mb-1 text-slate-900 dark:text-white text-center whitespace-normal leading-snug h-14 flex items-center justify-center font-sans tracking-tight">
-                                    {cert.name}
-                                </h3>
-                                <p className="text-slate-500 dark:text-slate-400 font-medium mb-5 text-center text-sm font-sans">
-                                    {cert.issuer}
-                                </p>
-                                <a
-                                    href={cert.pdfUrl}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="flex items-center gap-2 px-6 py-2.5 glass rounded-xl text-sm font-bold text-blue-600 dark:text-blue-400 hover:bg-blue-600 hover:text-white transition-all shadow-lg border border-white/20 group/btn"
-                                >
-                                    <span>View Certificate</span>
-                                    <ExternalLink className="w-4 h-4 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
-                                </a>
-                            </div>
+                            </motion.div>
                         ))}
                     </div>
-                </div>
-            </div>
 
-            {/* Scroll Icon to Contact */}
-            <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20">
-                <ScrollIcon href="#contact" label="Scroll to Contact" />
+                    {/* Sliding Indicator (Dots) */}
+                    <div className="flex justify-center items-center gap-3 mt-10">
+                        {certs.map((_, idx) => {
+                            // Calculate which dot is currently active based on progress
+                            const activeIdx = Math.round(progress * (certs.length - 1));
+                            const isActive = activeIdx === idx;
+                            return (
+                                <button
+                                    key={idx}
+                                    onClick={() => scrollToDot(idx)}
+                                    aria-label={`Go to slide ${idx + 1}`}
+                                    className={`h-2.5 rounded-full transition-all duration-300 ${
+                                        isActive 
+                                            ? "w-8 bg-slate-800" 
+                                            : "w-2.5 bg-slate-300 hover:bg-slate-400"
+                                    }`}
+                                />
+                            );
+                        })}
+                    </div>
+                </div>
+
             </div>
-        </section >
+        </section>
     );
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import CustomCursor from "./CustomCursor";
 
 export default function ClientLayout({ children }: { children: React.ReactNode }) {
     const lenisRef = useRef<any>(null);
@@ -70,5 +71,10 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
         return <div style={{ opacity: 0 }}>{children}</div>;
     }
 
-    return <>{children}</>;
+    return (
+        <>
+            <CustomCursor />
+            {children}
+        </>
+    );
 }

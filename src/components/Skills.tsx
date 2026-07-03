@@ -1,137 +1,116 @@
 "use client";
 
-import { motion } from "framer-motion";
-import GlassCard from "./GlassCard";
+import { motion, Variants } from "framer-motion";
 import { Icon } from "@iconify/react";
-import ScrollIcon from "./ScrollIcon";
 
 const skillCategories = [
     {
-        title: "Languages & Frameworks",
-        icon: <img src="/skills/frontend.png" alt="Languages & Frameworks" className="w-7 h-7 object-contain" />,
+        title: "Frontend Engineering",
         skills: [
-            "logos:java",
-            "logos:javascript",
-            "logos:react",
-            "logos:nextjs-icon",
-            "logos:nodejs-icon",
-            "skill-icons:expressjs-dark",
-            "logos:html-5",
-            "logos:css-3",
-        ],
+            { name: "React", icon: "logos:react" },
+            { name: "Next.js", icon: "logos:nextjs-icon" },
+            { name: "TypeScript", icon: "logos:typescript-icon" },
+            { name: "Tailwind CSS", icon: "devicon:tailwindcss" },
+            { name: "Framer Motion", icon: "logos:framer" },
+        ]
     },
     {
-        title: "Libraries",
-        icon: <img src="/skills/library.svg" alt="Libraries" className="w-7 h-7 object-contain" />,
+        title: "Backend & Systems",
         skills: [
-            "logos:react-query-icon",
-            "logos:tailwindcss-icon",
-            "logos:bootstrap",
-            "logos:material-ui",
-            "simple-icons:langchain",
-        ],
+            { name: "Node.js", icon: "logos:nodejs-icon" },
+            { name: "Java", icon: "logos:java" },
+            { name: "PostgreSQL", icon: "logos:postgresql" },
+            { name: "MongoDB", icon: "logos:mongodb-icon" },
+            { name: "Redis", icon: "logos:redis" },
+        ]
     },
     {
-        title: "Database",
-        icon: <img src="/skills/database.png" alt="Database" className="w-7 h-7 object-contain" />,
+        title: "Tools & DevOps",
         skills: [
-            "logos:mongodb-icon",
-            "logos:mysql-icon",
-            "logos:prisma",
-        ],
-    },
-    {
-        title: "Tools & Platforms",
-        icon: <Icon icon="noto:hammer-and-wrench" width="28" height="28" />,
-        skills: [
-            "logos:git-icon",
-            "logos:github-icon",
-            "logos:visual-studio-code",
-            "logos:postman-icon",
-            "logos:vercel-icon",
-            "logos:chrome",
-        ],
-    },
-    {
-        title: "Concepts",
-        icon: <Icon icon="noto:light-bulb" width="28" height="28" />,
-        skills: [
-            "noto:globe-with-meridians",
-            "noto:locked-with-key",
-            "noto:package",
-        ],
-        labels: [
-            "RESTful APIs",
-            "JWT Auth",
-            "OOP",
-        ],
-    },
-    {
-        title: "Cloud",
-        icon: <img src="/skills/cloud.png" alt="Cloud" className="w-7 h-7 object-contain" />,
-        skills: [
-            "logos:aws",
-        ],
-    },
+            { name: "Git", icon: "logos:git-icon" },
+            { name: "Docker", icon: "logos:docker-icon" },
+            { name: "AWS", icon: "logos:aws" },
+            { name: "Vercel", icon: "logos:vercel-icon" },
+            { name: "Linux", icon: "logos:linux-tux" },
+        ]
+    }
 ];
 
 export default function Skills() {
     return (
-        <section id="skills" className="min-h-screen flex items-center py-24 bg-[#f0f9ff]/50 dark:bg-black relative overflow-hidden">
-            {/* Background Orbs */}
-            <div className="absolute top-1/4 -right-20 w-[600px] h-[600px] bg-indigo-500/5 dark:bg-indigo-500/2 rounded-full blur-[140px] animate-pulse" />
-            <div className="absolute bottom-1/4 -left-20 w-[600px] h-[600px] bg-cyan-500/5 dark:bg-cyan-500/2 rounded-full blur-[140px] animate-pulse" />
-            <div className="container mx-auto px-6">
-                <div className="flex flex-col items-center mb-16">
-                    <motion.h2
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5 }}
-                        className="text-3xl md:text-4xl font-bold mb-4 font-display text-slate-900 dark:text-white"
+        <section id="skills" className="py-24 bg-[#fffdf8] relative border-y-2 border-dashed border-slate-300">
+            {/* Paper Texture Overlay */}
+            <div className="absolute inset-0 opacity-[0.2] pointer-events-none" style={{ backgroundImage: 'url("https://www.transparenttextures.com/patterns/cream-paper.png")' }} />
+
+            <div className="container mx-auto px-6 relative z-10 max-w-6xl">
+                
+                <div className="mb-16 relative inline-block">
+                    {/* Highlighter underline */}
+                    <span className="absolute bottom-1 left-0 w-full h-4 bg-amber-200 -z-10 -rotate-1" />
+                    <motion.h2 
+                        initial={{ opacity: 0, x: -100 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true, margin: "-50px" }}
+                        transition={{ duration: 0.6 }}
+                        className="text-5xl font-black text-slate-900 font-poppins mb-2"
                     >
-                        Technical Expertise
+                        My Skills
                     </motion.h2>
-                    <div className="w-20 h-1.5 bg-blue-600 rounded-full" />
                 </div>
 
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
-                >
-                    {skillCategories.map((cat, idx) => (
-                        <GlassCard key={cat.title} delay={idx * 0.08} className="flex flex-col h-full bg-white/95 dark:bg-white/8 shadow-2xl border-white/40 dark:border-white/10 p-6 md:p-8">
-                            <div className="w-12 h-12 rounded-2xl bg-slate-100 dark:bg-white/5 mb-5 flex items-center justify-center border border-slate-200 dark:border-white/10 shadow-sm">
-                                {cat.icon}
-                            </div>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+                    {skillCategories.map((category, idx) => {
+                        const isEven = idx % 2 === 0;
+                        const containerVariants: Variants = {
+                            hidden: { opacity: 0, x: isEven ? -100 : 100 },
+                            visible: {
+                                opacity: 1,
+                                x: 0,
+                                transition: { duration: 0.6, delay: idx * 0.1, type: "spring", bounce: 0.2, staggerChildren: 0.1, delayChildren: 0.3 }
+                            }
+                        };
+                        const itemVariants: Variants = {
+                            hidden: { opacity: 0, y: 20 },
+                            visible: { opacity: 1, y: 0, transition: { duration: 0.4 } }
+                        };
 
-                            <h3 className="text-xl md:text-2xl font-bold mb-5 text-slate-900 dark:text-white">{cat.title}</h3>
+                        return (
+                            <motion.div
+                                key={category.title}
+                                variants={containerVariants}
+                                initial="hidden"
+                                whileInView="visible"
+                                viewport={{ once: true, margin: "-50px" }}
+                                className="bg-white p-6 rounded-sm shadow-[4px_4px_0px_0px_rgba(0,0,0,0.1)] border border-slate-300 relative"
+                            >
+                                {/* Tape */}
+                                <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-16 h-6 bg-blue-100/50 backdrop-blur-xs border border-blue-200/50 shadow-sm rotate-3" />
 
-                            <div className="flex flex-wrap gap-2 md:gap-3">
-                                {cat.skills.map((skill, i) => (
-                                    <div
-                                        key={skill}
-                                        className="skill-pill p-2 md:p-3 glass rounded-2xl border-white/20 shadow-md cursor-pointer flex flex-col items-center gap-1.5"
-                                    >
-                                        <Icon icon={skill} width="24" height="24" className="md:w-8 md:h-8" />
-                                        {cat.labels && cat.labels[i] && (
-                                            <span className="text-[11px] md:text-xs font-semibold text-slate-600 dark:text-slate-300 whitespace-nowrap" style={{ fontFamily: 'var(--font-poppins)' }}>
-                                                {cat.labels[i]}
+                                <h3 className="text-xl font-black text-slate-900 font-poppins mb-6 pb-2 border-b-2 border-slate-100">
+                                    {category.title}
+                                </h3>
+                                
+                                <div className="flex flex-col gap-5">
+                                    {category.skills.map((skill) => (
+                                        <motion.div 
+                                            key={skill.name} 
+                                            variants={itemVariants}
+                                            className="flex items-center gap-4 group"
+                                        >
+                                            <div className="w-8 h-8 flex items-center justify-center shrink-0 transition-transform group-hover:scale-110">
+                                                <Icon icon={skill.icon} className="w-full h-full" />
+                                            </div>
+                                            <span className="text-lg font-bold text-slate-700">
+                                                {skill.name}
                                             </span>
-                                        )}
-                                    </div>
-                                ))}
-                            </div>
-                        </GlassCard>
-                    ))}
-                </motion.div>
-            </div>
+                                        </motion.div>
+                                    ))}
+                                </div>
+                            </motion.div>
+                        );
+                    })}
+                </div>
 
-            {/* Scroll to next section */}
-            <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20">
-                <ScrollIcon href="#projects" label="Scroll to Projects" />
             </div>
         </section>
     );
