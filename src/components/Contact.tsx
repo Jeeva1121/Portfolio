@@ -13,8 +13,14 @@ export default function Contact() {
         setIsSubmitting(true);
         
         try {
+            const key = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
+            if (!key) {
+                alert("API Key is missing! Vercel cannot find NEXT_PUBLIC_WEB3FORMS_KEY.");
+                setIsSubmitting(false);
+                return;
+            }
             const formData = new FormData(e.currentTarget);
-            formData.append("access_key", process.env.NEXT_PUBLIC_WEB3FORMS_KEY as string);
+            formData.append("access_key", key);
 
             const response = await fetch("https://api.web3forms.com/submit", {
                 method: "POST",
@@ -29,9 +35,11 @@ export default function Contact() {
                 setTimeout(() => setIsSuccess(false), 4000);
             } else {
                 console.error("Web3Forms Error:", data);
+                alert("Failed to send message: " + data.message);
             }
         } catch (error) {
             console.error("Submission Error:", error);
+            alert("An error occurred while sending the message.");
         } finally {
             setIsSubmitting(false);
         }
