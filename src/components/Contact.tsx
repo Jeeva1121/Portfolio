@@ -13,16 +13,9 @@ export default function Contact() {
         setIsSubmitting(true);
         
         try {
-            const key = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
-            if (!key) {
-                alert("API Key is missing! Vercel cannot find NEXT_PUBLIC_WEB3FORMS_KEY.");
-                setIsSubmitting(false);
-                return;
-            }
             const formData = new FormData(e.currentTarget);
-            formData.append("access_key", key);
 
-            const response = await fetch("https://api.web3forms.com/submit", {
+            const response = await fetch("/api/contact", {
                 method: "POST",
                 body: formData
             });
