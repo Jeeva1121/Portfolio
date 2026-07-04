@@ -18,7 +18,8 @@ export default function Contact() {
             const k2 = "4068-804d-";
             const k3 = "cdc9771b6c84";
             
-            const formData = new FormData(e.currentTarget);
+            const formElement = e.currentTarget;
+            const formData = new FormData(formElement);
             formData.append("access_key", k1 + k2 + k3);
 
             const response = await fetch("https://api.web3forms.com/submit", {
@@ -30,7 +31,7 @@ export default function Contact() {
 
             if (data.success) {
                 setIsSuccess(true);
-                e.currentTarget.reset();
+                formElement.reset();
                 setTimeout(() => setIsSuccess(false), 4000);
             } else {
                 console.error("Web3Forms Error:", data);
