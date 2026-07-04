@@ -10,7 +10,7 @@ const projects = [
         category: "Full Stack Platform",
         desc: "A comprehensive platform for hosting hackathons, complete with team registration, admin dashboard, and real-time leaderboards.",
         tech: ["React", "Node.js", "Firebase", "Tailwind"],
-        links: { github: "#", live: "https://hackathon-hack-jit-1-0.vercel.app/" },
+        links: { github: "https://github.com/Jeeva1121/Hackathon---Hack-JIT-1.0", live: "https://hackathon-hack-jit-1-0.vercel.app/" },
         image: "/projects/hackjit.png",
     },
     {
@@ -18,7 +18,7 @@ const projects = [
         category: "GPU Web Application",
         desc: "A highly-interactive 3D web application utilizing WebGL and custom shaders to deliver stunning visual effects.",
         tech: ["Next.js 14", "Framer Motion", "OGL", "GLSL"],
-        links: { github: "#", live: "https://requirement-page.vercel.app/" },
+        links: { github: "https://github.com/Jeeva1121/Requirement-Page", live: "https://requirement-page.vercel.app/" },
         image: "/projects/webcraft.png",
     },
     {
@@ -26,7 +26,7 @@ const projects = [
         category: "Stateless System",
         desc: "An intelligent, context-aware assistant leveraging vector embeddings for high-speed retrieval and generation.",
         tech: ["Next.js", "React 19", "Pinecone"],
-        links: { github: "#", live: "https://rag-app-mu.vercel.app/" },
+        links: { github: "https://github.com/Jeeva1121/Rag-App", live: "https://rag-app-mu.vercel.app/" },
         image: "/projects/lumina-ai.png",
     }
 ];
