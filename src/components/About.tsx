@@ -52,12 +52,9 @@ export default function About() {
                     <motion.div
                         initial={{ opacity: 0, x: -100 }}
                         whileInView={{ opacity: 1, x: 0 }}
-                        animate={isMobile ? {} : { y: [0, -20, 0], rotate: [-4, 4, -4] }}
+                        animate={{ y: [0, -15, 0], rotate: isMobile ? [-1, 1, -1] : [-4, 4, -4] }}
                         viewport={{ once: true }}
-                        transition={isMobile ? { 
-                            duration: 0.8, ease: [0.16, 1, 0.3, 1] 
-                        } : { 
-                            opacity: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
+                        transition={{ 
                             y: { repeat: Infinity, duration: 3, ease: "easeInOut" },
                             rotate: { repeat: Infinity, duration: 4, ease: "easeInOut" }
                         }}
