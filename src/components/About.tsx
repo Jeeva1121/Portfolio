@@ -39,7 +39,7 @@ export default function About() {
     };
 
     return (
-        <section id="about" className="py-24 bg-[#eef2f6] relative overflow-hidden border-t border-slate-200">
+        <section id="about" className="py-24 bg-[#FBF9F6] relative overflow-hidden border-t border-slate-200">
             
             {/* Extremely Subtle Ambient Glow */}
             <div className="hidden md:block absolute top-1/2 left-0 -translate-y-1/2 w-[600px] h-[600px] bg-linear-to-tr from-blue-200/40 to-transparent blur-[120px] rounded-full -z-10" />

@@ -38,7 +38,7 @@ const skillCategories = [
 
 export default function Skills() {
     return (
-        <section id="skills" className="py-24 bg-[#fffdf8] relative border-y-2 border-dashed border-slate-300">
+        <section id="skills" className="py-24 bg-[#FFFFFF] relative border-y-2 border-dashed border-slate-300">
             {/* Paper Texture Overlay */}
             <div className="absolute inset-0 opacity-[0.2] pointer-events-none" style={{ backgroundImage: 'url("https://www.transparenttextures.com/patterns/cream-paper.png")' }} />
 

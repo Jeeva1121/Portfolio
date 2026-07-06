@@ -93,7 +93,7 @@ export default function Certifications() {
     };
 
     return (
-        <section className="py-32 bg-white relative overflow-hidden">
+        <section className="py-32 bg-[#635BFF] relative overflow-hidden">
             <div className="container mx-auto px-6 max-w-7xl relative z-10">
                 
                 {/* Header */}
@@ -103,7 +103,7 @@ export default function Certifications() {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true, margin: "-50px" }}
                         transition={{ duration: 0.5 }}
-                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100 text-blue-700 font-semibold text-sm mb-6"
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 text-white border border-white/30 font-semibold text-sm mb-6"
                     >
                         <Icon icon="lucide:award" className="w-4 h-4" /> Achievements
                     </motion.div>
@@ -112,7 +112,7 @@ export default function Certifications() {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true, margin: "-50px" }}
                         transition={{ duration: 0.6, delay: 0.1 }}
-                        className="text-4xl md:text-5xl font-bold text-slate-900 mb-4 font-poppins"
+                        className="text-4xl md:text-5xl font-bold text-white mb-4 font-poppins"
                     >
                         Professional Certifications
                     </motion.h2>
@@ -121,23 +121,18 @@ export default function Certifications() {
                         whileInView={{ scaleX: 1 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6, delay: 0.3 }}
-                        className="w-16 h-1 bg-blue-500 rounded-full mx-auto"
+                        className="w-16 h-1 bg-[#D3F85A] rounded-full mx-auto"
                     />
                 </div>
 
                 {/* Carousel Container */}
                 <div className="relative">
 
+                    {/* Removed fade overlays as requested */}
 
-                    {/* Left fade */}
-                    <div className={`absolute left-0 top-0 bottom-0 w-16 bg-linear-to-r from-white to-transparent z-10 pointer-events-none transition-opacity duration-300 ${progress > 0.05 ? "opacity-100" : "opacity-0"}`} />
-                    {/* Right fade */}
-                    <div className={`absolute right-0 top-0 bottom-0 w-16 bg-linear-to-l from-white to-transparent z-10 pointer-events-none transition-opacity duration-300 ${progress < 0.95 ? "opacity-100" : "opacity-0"}`} />
-
-                    {/* Scrollable Track */}
                     <div
                         ref={scrollRef}
-                        className="flex gap-6 overflow-x-auto pb-6 pt-2 px-2 snap-x snap-mandatory scrollbar-hide"
+                        className="flex gap-6 overflow-x-auto pb-6 pt-2 px-2 scrollbar-hide"
                         style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
                     >
                         {certs.map((cert, idx) => (
@@ -147,7 +142,7 @@ export default function Certifications() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true, margin: "-30px" }}
                                 transition={{ duration: 0.5, delay: idx * 0.08 }}
-                                className="snap-start shrink-0"
+                                className="shrink-0"
                             >
                                 <div className="bg-white rounded-[2.5rem] w-[260px] h-[260px] sm:w-[280px] sm:h-[280px] border border-slate-900/20 p-6 flex flex-col items-center justify-center text-center hover:shadow-[0_12px_40px_rgb(0,0,0,0.1)] transition-all duration-300 group hover:-translate-y-1">
                                     
@@ -198,8 +193,8 @@ export default function Certifications() {
                                     aria-label={`Go to slide ${idx + 1}`}
                                     className={`h-2.5 rounded-full transition-all duration-300 ${
                                         isActive 
-                                            ? "w-8 bg-slate-800" 
-                                            : "w-2.5 bg-slate-300 hover:bg-slate-400"
+                                            ? "w-8 bg-[#D3F85A]" 
+                                            : "w-2.5 bg-white/30 hover:bg-white/50"
                                     }`}
                                 />
                             );

@@ -157,10 +157,10 @@ export default function Navbar() {
             >
                 <button
                     onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                    className="bg-white/90 backdrop-blur-md p-2.5 rounded-full shadow-md border border-slate-200 text-slate-700 flex items-center justify-center transition-all active:scale-95"
+                    className="bg-white/90 backdrop-blur-md p-2.5 rounded-full text-slate-900 shadow-sm flex items-center justify-center transition-transform active:scale-95"
                     aria-label="Toggle Menu"
                 >
-                    {isMobileMenuOpen ? <ChevronUp className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+                    <Menu className="w-5 h-5" />
                 </button>
             </motion.div>
 
@@ -168,24 +168,25 @@ export default function Navbar() {
             <AnimatePresence>
                 {isMobileMenuOpen && (
                     <>
-                        {/* Invisible overlay to close on click outside */}
+                        {/* Dark overlay */}
                         <motion.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
+                            transition={{ duration: 0.2 }}
                             onClick={() => setIsMobileMenuOpen(false)}
-                            className="md:hidden fixed inset-0 z-998 bg-slate-900/10 backdrop-blur-sm"
+                            className="md:hidden fixed inset-0 z-998 bg-slate-900/20 backdrop-blur-sm"
                         />
                         
-                        {/* Apple-style floating menu */}
+                        {/* Compact card dropdown */}
                         <motion.div
-                            initial={{ opacity: 0, scale: 0.95, y: -20 }}
+                            initial={{ opacity: 0, scale: 0.95, y: -10 }}
                             animate={{ opacity: 1, scale: 1, y: 0 }}
-                            exit={{ opacity: 0, scale: 0.95, y: -20 }}
-                            transition={{ duration: 0.4, type: "spring", bounce: 0.2 }}
-                            className="md:hidden fixed top-20 left-4 right-4 z-1000 bg-white/70 backdrop-blur-3xl rounded-3xl shadow-[0_30px_60px_rgb(0,0,0,0.12)] border border-white/50 overflow-hidden p-3 font-poppins"
+                            exit={{ opacity: 0, scale: 0.95, y: -10 }}
+                            transition={{ type: "spring", bounce: 0.2, duration: 0.4 }}
+                            className="md:hidden fixed top-20 right-4 w-64 z-1000 bg-white shadow-2xl rounded-2xl flex flex-col font-poppins overflow-hidden border border-slate-100"
                         >
-                            <div className="flex flex-col gap-1.5">
+                            <div className="flex flex-col p-2 gap-1">
                                 {navItems.map((item) => {
                                     const isHome = item.href === "#";
                                     const sectionId = isHome ? "" : item.href.replace("#", "");
@@ -196,18 +197,18 @@ export default function Navbar() {
                                             key={item.name}
                                             href={item.href}
                                             onClick={() => setIsMobileMenuOpen(false)}
-                                            className={`flex items-center gap-4 px-5 py-3.5 text-[15px] font-medium rounded-2xl transition-all ${isActive ? "text-[#006aff] bg-white shadow-sm font-semibold" : "text-slate-600 hover:text-slate-900 hover:bg-white/60"}`}
+                                            className={`flex items-center gap-3 px-4 py-3 text-[15px] rounded-xl transition-colors ${isActive ? "bg-blue-50 text-blue-600 font-semibold" : "text-slate-600 hover:bg-slate-50 hover:text-slate-900 font-medium"}`}
                                         >
-                                            {item.icon && <item.icon className={`w-5 h-5 ${isActive ? 'text-[#006aff]' : 'text-slate-400'}`} />}
+                                            {item.icon && <item.icon className={`w-4 h-4 ${isActive ? 'text-blue-600' : 'text-slate-400'}`} />}
                                             <span>{item.name}</span>
                                         </a>
                                     );
                                 })}
-                                <div className="h-px bg-slate-200/60 my-2 mx-4" />
+                                <div className="h-px bg-slate-100 my-1 mx-2" />
                                 <a
                                     href="#contact"
                                     onClick={() => setIsMobileMenuOpen(false)}
-                                    className="flex items-center justify-center gap-2 px-5 py-3.5 text-[15px] font-semibold text-white bg-[#006aff] rounded-2xl shadow-md active:scale-95 transition-all mt-1 mx-1"
+                                    className="flex items-center justify-center gap-2 w-full py-3 mt-1 text-[14px] font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded-xl transition-colors"
                                 >
                                     <span>Hire Me</span>
                                 </a>

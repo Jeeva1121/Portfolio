@@ -46,7 +46,7 @@ export default function Contact() {
     };
 
     return (
-        <section id="contact" className="py-24 bg-[#fdfbf7] relative overflow-hidden">
+        <section id="contact" className="py-24 bg-[#1A1A1A] relative overflow-hidden">
             {/* Paper Texture Overlay */}
             <div className="absolute inset-0 opacity-[0.4] pointer-events-none" style={{ backgroundImage: 'url("https://www.transparenttextures.com/patterns/cream-paper.png")' }} />
 
@@ -63,21 +63,21 @@ export default function Contact() {
                             className="flex flex-col justify-between"
                         >
                             <div>
-                                <h2 className="text-5xl md:text-6xl font-black text-slate-900 font-poppins mb-6">
+                                <h2 className="text-5xl md:text-6xl font-black text-white font-poppins mb-6">
                                     Let's Work Together.
                                 </h2>
-                                <p className="text-lg text-slate-700 font-medium mb-12 max-w-sm leading-relaxed">
+                                <p className="text-lg text-slate-300 font-medium mb-12 max-w-sm leading-relaxed">
                                     I'm always open to discussing product design work or partnership opportunities.
                                 </p>
 
                                 <div className="space-y-6">
                                     {/* Email */}
                                     <div className="relative inline-block group">
-                                        <div className="absolute top-1/2 -left-4 w-[110%] h-12 bg-amber-200 -z-10 -translate-y-1/2 -rotate-2 group-hover:rotate-0 transition-transform" />
-                                        <a href="mailto:jeevanantham1035@gmail.com" className="flex items-center gap-4 text-slate-900 px-2">
+                                        <div className="absolute top-1/2 -left-4 w-[110%] h-12 bg-[#2D45FA] -z-10 -translate-y-1/2 -rotate-2 group-hover:rotate-0 transition-transform" />
+                                        <a href="mailto:jeevanantham1035@gmail.com" className="flex items-center gap-4 text-white px-2">
                                             <Icon icon="logos:google-gmail" className="w-8 h-8" />
                                             <div>
-                                                <p className="text-xs font-black text-slate-800 uppercase tracking-widest mb-1">Email</p>
+                                                <p className="text-xs font-black text-slate-300 uppercase tracking-widest mb-1">Email</p>
                                                 <p className="text-lg font-bold">jeevanantham1035@gmail.com</p>
                                             </div>
                                         </a>
@@ -85,7 +85,7 @@ export default function Contact() {
                                     <br />
                                     {/* Location */}
                                     <div className="relative inline-block group">
-                                        <div className="absolute top-1/2 -left-4 w-[110%] h-12 bg-teal-200 -z-10 -translate-y-1/2 rotate-1 group-hover:rotate-0 transition-transform" />
+                                        <div className="absolute top-1/2 -left-4 w-[110%] h-12 bg-[#D3F85A] -z-10 -translate-y-1/2 rotate-1 group-hover:rotate-0 transition-transform" />
                                         <div className="flex items-center gap-4 text-slate-900 px-2 mt-4">
                                             <Icon icon="logos:google-maps" className="w-8 h-8" />
                                             <div>
@@ -98,12 +98,12 @@ export default function Contact() {
                             </div>
                             
                             <div className="mt-16 lg:mt-0 pt-12">
-                                <h3 className="text-sm font-black text-slate-800 uppercase tracking-widest mb-6">Connect With Me</h3>
+                                <h3 className="text-sm font-black text-slate-400 uppercase tracking-widest mb-6">Connect With Me</h3>
                                 <div className="flex gap-4">
-                                    <a href="https://github.com/Jeeva1121" target="_blank" rel="noopener noreferrer" className="w-14 h-14 rounded-full border-2 border-slate-900 bg-white flex items-center justify-center text-slate-900 shadow-[4px_4px_0px_0px_rgba(15,23,42,1)] hover:translate-y-1 hover:translate-x-1 hover:shadow-none transition-all">
+                                    <a href="https://github.com/Jeeva1121" target="_blank" rel="noopener noreferrer" className="w-14 h-14 rounded-full border-2 border-white bg-transparent flex items-center justify-center text-white shadow-[4px_4px_0px_0px_rgba(255,255,255,0.2)] hover:translate-y-1 hover:translate-x-1 hover:shadow-none hover:bg-white hover:text-black transition-all">
                                         <Icon icon="mdi:github" className="w-8 h-8" />
                                     </a>
-                                    <a href="https://www.linkedin.com/in/jeevanantham5b2a19324" target="_blank" rel="noopener noreferrer" className="w-14 h-14 rounded-full border-2 border-slate-900 bg-white flex items-center justify-center shadow-[4px_4px_0px_0px_rgba(15,23,42,1)] hover:translate-y-1 hover:translate-x-1 hover:shadow-none transition-all">
+                                    <a href="https://www.linkedin.com/in/jeevanantham5b2a19324" target="_blank" rel="noopener noreferrer" className="w-14 h-14 rounded-full border-2 border-white bg-transparent flex items-center justify-center text-white shadow-[4px_4px_0px_0px_rgba(255,255,255,0.2)] hover:translate-y-1 hover:translate-x-1 hover:shadow-none hover:bg-white hover:text-blue-600 transition-all">
                                         <Icon icon="logos:linkedin-icon" className="w-7 h-7" />
                                     </a>
                                 </div>
@@ -116,10 +116,10 @@ export default function Contact() {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true, margin: "-50px" }}
                             transition={{ duration: 0.6, delay: 0.2 }}
-                            className="bg-[#fffdf8] p-8 md:p-12 border-2 border-slate-900 shadow-[8px_8px_0px_0px_rgba(15,23,42,1)] relative"
+                            className="bg-[#FBF9F6] p-8 md:p-12 border-2 border-slate-900 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] relative"
                         >
                             {/* Tape */}
-                            <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-24 h-8 bg-blue-100/60 backdrop-blur-xs border border-blue-200 shadow-sm rotate-2" />
+                            <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-24 h-8 bg-slate-200 border border-slate-300 shadow-sm rotate-2" />
 
                             <form onSubmit={handleSubmit} className="flex flex-col gap-8">
                                 <div className="relative inline-block mb-2">

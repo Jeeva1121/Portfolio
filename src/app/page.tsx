@@ -9,7 +9,7 @@ import ScrollToTop from "@/components/ScrollToTop";
 
 export default function Home() {
   return (
-    <main className="relative bg-[#fafafa] text-slate-900 min-h-screen font-sans selection:bg-slate-900 selection:text-white">
+    <main className="relative bg-[#1A1A1A] text-slate-900 min-h-screen font-sans selection:bg-slate-900 selection:text-white">
       <Navbar />
       
       {/* Editorial Flow */}
@@ -23,7 +23,7 @@ export default function Home() {
       <ScrollToTop />
 
       {/* Minimal Footer */}
-      <footer className="py-12 border-t border-black/5 text-center bg-[#fafafa] text-slate-500">
+      <footer className="py-12 border-t border-[#333333] text-center bg-[#1A1A1A] text-slate-400">
         <div className="container mx-auto px-6">
           <p className="text-xs md:text-sm font-medium tracking-widest uppercase">
             © 2026 Jeevanantham S. Creative Developer.

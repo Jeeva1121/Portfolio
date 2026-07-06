@@ -36,7 +36,7 @@ import { useState } from "react";
 export default function Projects() {
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
     return (
-        <section id="projects" className="py-32 bg-slate-50 relative overflow-hidden">
+        <section id="projects" className="py-32 bg-[#111111] relative overflow-hidden">
             <div className="container mx-auto px-6 max-w-7xl relative z-10">
                 
                 {/* Header */}
@@ -55,7 +55,7 @@ export default function Projects() {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true, margin: "-50px" }}
                         transition={{ duration: 0.6, delay: 0.1 }}
-                        className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 font-poppins"
+                        className="text-4xl md:text-5xl font-bold text-white mb-6 font-poppins"
                     >
                         Selected Work
                     </motion.h2>
@@ -64,7 +64,7 @@ export default function Projects() {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true, margin: "-50px" }}
                         transition={{ duration: 0.6, delay: 0.2 }}
-                        className="text-slate-500 text-lg max-w-2xl mx-auto"
+                        className="text-slate-400 text-lg max-w-2xl mx-auto"
                     >
                         A collection of my recent projects, showcasing my expertise in building scalable, modern, and user-centric web applications.
                     </motion.p>
@@ -79,10 +79,10 @@ export default function Projects() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true, margin: "-30px" }}
                                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                                className="bg-white rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100 flex flex-col overflow-hidden transition-all duration-300 relative hover:scale-[1.02] hover:shadow-[0_30px_60px_rgb(0,0,0,0.15)] z-10 hover:z-20 md:group-hover/grid:not-[&:hover]:scale-95 md:group-hover/grid:not-[&:hover]:opacity-50"
+                                className="bg-[#1C1C1C] rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.5)] border border-[#2A2A2A] flex flex-col overflow-hidden transition-all duration-300 relative hover:scale-[1.02] hover:shadow-[0_30px_60px_rgb(0,0,0,0.8)] z-10 hover:z-20 md:group-hover/grid:not-[&:hover]:scale-95 md:group-hover/grid:not-[&:hover]:opacity-50"
                             >
                             {/* Top Image Section */}
-                            <div className="w-full aspect-video relative overflow-hidden bg-slate-100">
+                            <div className="w-full aspect-video relative overflow-hidden bg-[#111111]">
                                 <Image
                                     src={project.image}
                                     alt={project.title}
@@ -101,28 +101,28 @@ export default function Projects() {
                                     </span>
                                 </div>
                                 
-                                <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-green-600 transition-colors font-poppins">
+                                <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-green-400 transition-colors font-poppins">
                                     {project.title}
                                 </h3>
                                 
-                                <p className="text-slate-600 mb-8 text-sm leading-relaxed grow">
+                                <p className="text-slate-300 mb-8 text-sm leading-relaxed grow">
                                     {project.desc}
                                 </p>
                                 
                                 <div className="mt-auto space-y-6">
                                     <div className="flex flex-wrap gap-2">
                                         {project.tech.map((t) => (
-                                            <span key={t} className="text-xs font-semibold text-slate-500 bg-slate-50 px-2.5 py-1.5 rounded-lg border border-slate-200">
+                                            <span key={t} className="text-xs font-semibold text-slate-300 bg-[#2A2A2A] px-2.5 py-1.5 rounded-lg border border-[#333333]">
                                                 {t}
                                             </span>
                                         ))}
                                     </div>
 
-                                    <div className="flex items-center justify-between pt-6 border-t border-slate-100">
-                                        <a href={project.links.github} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-slate-900 transition-colors flex items-center gap-2 text-sm font-semibold">
+                                    <div className="flex items-center justify-between pt-6 border-t border-[#2A2A2A]">
+                                        <a href={project.links.github} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white transition-colors flex items-center gap-2 text-sm font-semibold">
                                             <Icon icon="mdi:github" className="w-5 h-5" /> Code
                                         </a>
-                                        <a href={project.links.live} target="_blank" rel="noopener noreferrer" className="text-green-600 hover:text-green-700 transition-colors flex items-center gap-1.5 text-sm font-bold group/link">
+                                        <a href={project.links.live} target="_blank" rel="noopener noreferrer" className="text-green-400 hover:text-green-300 transition-colors flex items-center gap-1.5 text-sm font-bold group/link">
                                             Live Demo <Icon icon="lucide:arrow-up-right" className="w-4 h-4 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
                                         </a>
                                     </div>

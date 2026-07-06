@@ -63,12 +63,12 @@ export default function Hero() {
     };
 
     return (
-        <section id="home" onMouseMove={handleMouseMove} className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-[#fafafa]">
+        <section id="home" onMouseMove={handleMouseMove} className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-[#2D45FA]">
             
             {/* Ambient Glow Parallax */}
             <motion.div 
                 style={{ x: glowX, y: glowY }}
-                className="hidden md:block absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-linear-to-b from-blue-200/40 to-transparent blur-[120px] rounded-full -z-10" 
+                className="hidden md:block absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-linear-to-b from-white/10 to-transparent blur-[120px] rounded-full -z-10" 
             />
 
             <div className="container mx-auto px-6 relative z-10 pt-20 sm:pt-32 pb-16 flex flex-col items-center justify-center text-center">
@@ -82,7 +82,7 @@ export default function Hero() {
                             animate={{ opacity: 1, x: 0 }}
                             exit={{ opacity: 0, x: 50 }}
                             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                            className="text-[2.5rem] sm:text-6xl md:text-[5rem] lg:text-[6rem] font-black tracking-tighter leading-tight sm:leading-tight font-poppins text-transparent bg-clip-text bg-linear-to-br from-slate-900 via-slate-800 to-slate-500 px-4 py-4 max-w-full"
+                            className="text-[2.5rem] sm:text-6xl md:text-[5rem] lg:text-[6rem] font-black tracking-tighter leading-tight sm:leading-tight font-poppins text-transparent bg-clip-text bg-linear-to-br from-white via-blue-50 to-blue-200 px-4 py-4 max-w-full"
                         >
                             {roles[roleIndex]}
                         </motion.h1>
@@ -94,7 +94,7 @@ export default function Hero() {
                     variants={containerVariants}
                     initial="hidden"
                     animate="visible"
-                    className="text-lg sm:text-xl text-slate-500 max-w-2xl font-medium leading-relaxed mb-10 flex flex-wrap justify-center gap-x-1.5"
+                    className="text-lg sm:text-xl text-blue-100 max-w-2xl font-medium leading-relaxed mb-10 flex flex-wrap justify-center gap-x-1.5"
                 >
                     {subtitleWords.map((word, idx) => (
                         <motion.span key={idx} variants={wordVariants}>
@@ -110,7 +110,7 @@ export default function Hero() {
                     transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
                     className="flex flex-col sm:flex-row items-center gap-6 mb-16"
                 >
-                    <AnimatedButton href="#projects" text="View My Work" />
+                    <AnimatedButton href="#projects" text="View My Work" className="bg-[#D3F85A]! border-[#b8dd3a]! text-slate-900! [&_path]:fill-slate-900! hover:bg-[#c2e849]! hover:border-[#a6cc29]! active:border-[#b8dd3a]!" />
                     <AnimatedButton href="/resume.pdf" text="Download Resume" target="_blank" rel="noopener noreferrer" className="bg-[#1c1c1c]! border-[#333333]! hover:bg-[#2a2a2a]! hover:border-[#444444]! active:border-[#333333]!" />
                 </motion.div>
 
@@ -119,7 +119,7 @@ export default function Hero() {
                     initial={{ opacity: 0, scale: 0.9, y: 50 }}
                     animate={{ opacity: 1, scale: 1, y: 0 }}
                     transition={{ duration: 1.2, delay: 0.5, type: "spring", bounce: 0.2 }}
-                    className="relative w-full max-w-[320px] sm:max-w-[420px] lg:max-w-[500px] aspect-square -mt-4 sm:-mt-8"
+                    className="relative w-full max-w-[280px] sm:max-w-[360px] lg:max-w-[420px] aspect-square -mt-4 sm:-mt-8"
                 >
                     <motion.div 
                         style={{ x: imageX, y: imageY }}
@@ -131,7 +131,7 @@ export default function Hero() {
                             className="w-full h-full relative"
                         >
                             <Image 
-                                src="/hero-img.png" 
+                                src="/hero-image-new.png" 
                                 alt="Jeevanantham S." 
                                 fill 
                                 className="object-contain drop-shadow-[0_45px_45px_rgba(0,0,0,0.2)]"
