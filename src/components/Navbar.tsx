@@ -160,13 +160,21 @@ export default function Navbar() {
                 }}
                 className="md:hidden fixed top-4 right-4 z-999 flex items-center font-poppins"
             >
-                {/* Circular Toggle Button */}
+                {/* Circular Toggle Button with Custom Hamburger Icon */}
                 <button
                     onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                     className="w-10 h-10 rounded-full bg-white/95 backdrop-blur-md text-slate-800 shadow-sm border border-slate-200/90 flex items-center justify-center transition-transform active:scale-95"
                     aria-label="Toggle Menu"
                 >
-                    {isMobileMenuOpen ? <X className="w-5 h-5 text-slate-900" /> : <Menu className="w-5 h-5 text-slate-900" />}
+                    {isMobileMenuOpen ? (
+                        <X className="w-5 h-5 text-slate-900" />
+                    ) : (
+                        <img 
+                            src="/hamburger-icon.png" 
+                            alt="Menu" 
+                            className="w-6 h-6 object-contain select-none"
+                        />
+                    )}
                 </button>
             </motion.div>
 
