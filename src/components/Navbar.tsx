@@ -150,7 +150,7 @@ export default function Navbar() {
                 <AnimatedButton href="#contact" text="Hire Me" size="sm" className="px-3.5! py-1.5! border-[3px]! [&_span]:text-xs! [&_span]:font-semibold!" />
             </motion.div>
 
-            {/* Mobile Navigation - Right Corner Toggle */}
+            {/* Mobile Navigation - Right Corner Elements matching reference image */}
             <motion.div
                 initial={{ opacity: 0, x: 50 }}
                 animate={{
@@ -158,14 +158,29 @@ export default function Navbar() {
                     x: isMobile ? 0 : (isHidden ? 50 : 0),
                     pointerEvents: isMobile ? "auto" : (isHidden ? "none" : "auto")
                 }}
-                className="md:hidden fixed top-4 right-4 z-999 flex items-center gap-2 font-poppins"
+                className="md:hidden fixed top-4 right-4 z-999 flex items-center gap-2.5 font-poppins"
             >
+                {/* Profile Avatar as in reference */}
+                <a
+                    href="#about"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="w-10 h-10 rounded-full overflow-hidden border border-slate-200/90 shadow-sm flex items-center justify-center bg-white active:scale-95 transition-transform"
+                    aria-label="My profile"
+                >
+                    <img
+                        src="/about-me.png"
+                        alt="Profile"
+                        className="w-full h-full object-cover"
+                    />
+                </a>
+
+                {/* Circular Toggle Button matching reference */}
                 <button
                     onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                    className="bg-white/95 backdrop-blur-md p-2.5 rounded-full text-slate-900 shadow-md border border-slate-200/90 flex items-center justify-center transition-transform active:scale-95"
+                    className="w-10 h-10 rounded-full bg-white/95 backdrop-blur-md text-slate-800 shadow-sm border border-slate-200/90 flex items-center justify-center transition-transform active:scale-95"
                     aria-label="Toggle Menu"
                 >
-                    {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+                    {isMobileMenuOpen ? <X className="w-5 h-5 text-slate-900" /> : <Menu className="w-5 h-5 text-slate-900" />}
                 </button>
             </motion.div>
 
@@ -178,111 +193,103 @@ export default function Navbar() {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            transition={{ duration: 0.25 }}
+                            transition={{ duration: 0.2 }}
                             onClick={() => setIsMobileMenuOpen(false)}
-                            className="md:hidden fixed inset-0 z-998 bg-slate-950/45 backdrop-blur-sm"
+                            className="md:hidden fixed inset-0 z-998 bg-slate-950/20 backdrop-blur-xs"
                         />
                         
-                        {/* Modern Floating Sheet Menu */}
+                        {/* Modern Floating Minimalist Menu Card matching reference */}
                         <motion.div
-                            initial={{ opacity: 0, scale: 0.92, y: -16 }}
+                            initial={{ opacity: 0, scale: 0.94, y: -12 }}
                             animate={{ opacity: 1, scale: 1, y: 0 }}
-                            exit={{ opacity: 0, scale: 0.92, y: -16 }}
-                            transition={{ type: "spring", stiffness: 400, damping: 28 }}
-                            className="md:hidden fixed top-18 right-4 left-4 max-w-[340px] ml-auto z-1000 bg-white/95 backdrop-blur-2xl shadow-[0_25px_70px_-15px_rgba(15,23,42,0.22),0_4px_20px_rgba(0,0,0,0.06)] rounded-3xl flex flex-col font-poppins overflow-hidden border border-slate-200/90 p-4"
+                            exit={{ opacity: 0, scale: 0.94, y: -12 }}
+                            transition={{ type: "spring", stiffness: 450, damping: 28 }}
+                            className="md:hidden fixed top-16 right-4 z-1000 w-[240px] bg-white rounded-[28px] flex flex-col font-poppins shadow-[0_20px_50px_rgba(0,0,0,0.1),0_4px_16px_rgba(0,0,0,0.04)] border border-slate-100 p-2.5"
                         >
-                            {/* Menu Header Status Bar */}
-                            <div className="flex items-center justify-between px-2 pb-3 mb-2 border-b border-slate-100">
-                                <div className="flex items-center gap-2">
-                                    <span className="relative flex h-2 w-2">
-                                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                                        <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
-                                    </span>
-                                    <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500">
-                                        Available for work
-                                    </span>
-                                </div>
-                                <span className="text-xs font-black tracking-tight text-slate-900">
-                                    Portfolio<span className="text-blue-600">.</span>
-                                </span>
-                            </div>
-
                             {/* Nav Items */}
-                            <div className="flex flex-col gap-1.5">
-                                {navItems.map((item, idx) => {
+                            <div className="flex flex-col gap-1">
+                                {[
+                                    { name: "Home", href: "#", icon: "lucide:home" },
+                                    { name: "My profile", href: "#about", icon: "lucide:user" },
+                                    { name: "Projects", href: "#projects", icon: "lucide:folder" },
+                                    { name: "Skills", href: "#skills", icon: "lucide:flame" },
+                                    { name: "Contact", href: "#contact", icon: "lucide:mail" },
+                                ].map((item) => {
                                     const isHome = item.href === "#";
                                     const sectionId = isHome ? "" : item.href.replace("#", "");
                                     const isActive = activeSection === sectionId || (isHome && activeSection === "");
-                                    
-                                    const icons: Record<string, string> = {
-                                        Home: "lucide:home",
-                                        About: "lucide:user",
-                                        Projects: "lucide:folder-code",
-                                        Skills: "lucide:sparkles",
-                                        Contact: "lucide:mail",
-                                    };
 
                                     return (
-                                        <motion.a
+                                        <a
                                             key={item.name}
                                             href={item.href}
-                                            initial={{ opacity: 0, x: -10 }}
-                                            animate={{ opacity: 1, x: 0 }}
-                                            transition={{ delay: idx * 0.04 }}
                                             onClick={() => {
                                                 setActiveSection(sectionId);
                                                 setIsMobileMenuOpen(false);
                                             }}
-                                            className={`flex items-center justify-between px-4 py-3 text-sm rounded-2xl font-poppins transition-all duration-200 ${
+                                            className={`flex items-center gap-3 px-3.5 py-2.5 rounded-2xl text-[14.5px] transition-colors duration-150 ${
                                                 isActive 
-                                                    ? "bg-slate-950 text-white font-bold shadow-sm" 
-                                                    : "text-slate-700 hover:bg-slate-100/90 hover:text-slate-950 font-semibold"
+                                                    ? "bg-[#F4F4F6] text-slate-950 font-semibold" 
+                                                    : "text-slate-700 hover:bg-[#F4F4F6] hover:text-slate-950 font-medium"
                                             }`}
                                         >
-                                            <div className="flex items-center gap-3">
-                                                <Icon 
-                                                    icon={icons[item.name] || "lucide:arrow-right"} 
-                                                    className={`w-4.5 h-4.5 ${isActive ? "text-white" : "text-slate-400"}`} 
-                                                />
-                                                <span>{item.name}</span>
-                                            </div>
-                                            {isActive ? (
-                                                <span className="w-1.5 h-1.5 rounded-full bg-white shadow-xs" />
-                                            ) : (
-                                                <Icon icon="lucide:chevron-right" className="w-4 h-4 text-slate-300 opacity-60" />
-                                            )}
-                                        </motion.a>
+                                            <Icon 
+                                                icon={item.icon} 
+                                                className={`w-4.5 h-4.5 transition-colors ${
+                                                    isActive ? "text-slate-950" : "text-slate-600"
+                                                }`} 
+                                            />
+                                            <span>{item.name}</span>
+                                        </a>
                                     );
                                 })}
                             </div>
 
-                            {/* Divider & Action Buttons */}
-                            <div className="mt-3 pt-3 border-t border-slate-100 flex flex-col gap-2.5">
+                            {/* Black Pill CTA button matching Share & Grow from reference */}
+                            <div className="pt-1.5">
                                 <a
                                     href="#contact"
                                     onClick={() => setIsMobileMenuOpen(false)}
-                                    className="flex items-center justify-center gap-2 w-full py-3 text-sm font-bold text-slate-950 bg-[#D3F85A] hover:bg-[#c4eb46] border border-[#b8dd3a] rounded-2xl transition-all duration-200 font-poppins shadow-xs active:scale-98"
+                                    className="w-full py-3 px-4 bg-[#202020] hover:bg-black text-white text-[14.5px] font-semibold rounded-2xl text-center transition-all duration-200 active:scale-98 shadow-sm flex items-center justify-center gap-2"
                                 >
                                     <span>Hire Me</span>
-                                    <Icon icon="lucide:arrow-up-right" className="w-4 h-4" />
+                                </a>
+                            </div>
+
+                            {/* Faint Hairline Divider */}
+                            <div className="my-2 border-t border-slate-100" />
+
+                            {/* Bottom Item matching "Log out" layout in reference */}
+                            <div className="flex flex-col gap-1">
+                                <a
+                                    href="/resume.pdf"
+                                    download="Jeevanantham_Resume.pdf"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    onClick={() => setIsMobileMenuOpen(false)}
+                                    className="flex items-center gap-3 px-3.5 py-2 rounded-2xl text-[14px] font-medium text-slate-700 hover:text-slate-950 hover:bg-[#F4F4F6] transition-colors"
+                                >
+                                    <Icon icon="lucide:download" className="w-4.5 h-4.5 text-slate-600" />
+                                    <span>Download CV</span>
                                 </a>
 
-                                {/* Social links */}
-                                <div className="flex items-center justify-center gap-3 pt-1">
+                                {/* Subtle Social Footer */}
+                                <div className="flex items-center justify-between px-3.5 pt-1 text-[11px] font-semibold text-slate-500">
                                     <a
                                         href="https://github.com/Jeeva1121"
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-50 hover:bg-slate-100 border border-slate-200/80 text-[11px] font-bold text-slate-700 transition-colors"
+                                        className="hover:text-slate-950 transition-colors flex items-center gap-1.5"
                                     >
                                         <Icon icon="mdi:github" className="w-3.5 h-3.5" />
                                         <span>GitHub</span>
                                     </a>
+                                    <span className="text-slate-300">•</span>
                                     <a
                                         href="https://www.linkedin.com/in/jeevanantham5b2a19324"
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-50 hover:bg-sky-50 border border-slate-200/80 text-[11px] font-bold text-slate-700 hover:text-[#0A66C2] transition-colors"
+                                        className="hover:text-[#0A66C2] transition-colors flex items-center gap-1.5"
                                     >
                                         <Icon icon="mdi:linkedin" className="w-3.5 h-3.5 text-[#0A66C2]" />
                                         <span>LinkedIn</span>
