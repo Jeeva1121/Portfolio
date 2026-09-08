@@ -1,226 +1,317 @@
 "use client";
 
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { useState, useEffect } from "react";
 import Image from "next/image";
 import { Icon } from "@iconify/react";
+import Reveal from "./Reveal";
 
 export default function About() {
-    const [isMobile, setIsMobile] = useState(false);
-
-    useEffect(() => {
-        setIsMobile(window.innerWidth < 768);
-    }, []);
-
-    const x = useMotionValue(0);
-    const y = useMotionValue(0);
-
-    const mouseXSpring = useSpring(x, { stiffness: 300, damping: 30 });
-    const mouseYSpring = useSpring(y, { stiffness: 300, damping: 30 });
-
-    const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["15deg", "-15deg"]);
-    const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-15deg", "15deg"]);
-
-    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-        const rect = e.currentTarget.getBoundingClientRect();
-        const width = rect.width;
-        const height = rect.height;
-        const mouseX = e.clientX - rect.left;
-        const mouseY = e.clientY - rect.top;
-        const xPct = mouseX / width - 0.5;
-        const yPct = mouseY / height - 0.5;
-        x.set(xPct);
-        y.set(yPct);
-    };
-
-    const handleMouseLeave = () => {
-        x.set(0);
-        y.set(0);
-    };
-
     return (
-        <section id="about" className="py-24 bg-[#FBF9F6] relative overflow-hidden border-t border-slate-200">
+        <section id="about" className="pt-12 sm:pt-16 pb-14 sm:pb-18 notebook-ruled-bg relative overflow-hidden border-t border-t-slate-200 border-b-2 border-dashed border-b-slate-300 scroll-mt-0" style={{ contain: "layout style" }}>
             
-            {/* Extremely Subtle Ambient Glow */}
-            <div className="hidden md:block absolute top-1/2 left-0 -translate-y-1/2 w-[600px] h-[600px] bg-linear-to-tr from-blue-200/40 to-transparent blur-[120px] rounded-full -z-10" />
-
-            <div className="container mx-auto px-6 relative z-10 max-w-6xl">
+            <div className="container mx-auto px-6 max-w-6xl relative z-10">
                 
-                <div className="grid lg:grid-cols-[1fr_2fr] gap-12 items-start">
-                    
-                    {/* Left Column: Minimalist ID Badge */}
-                    <motion.div
-                        initial={{ opacity: 0, x: -100 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        animate={{ y: [0, -15, 0], rotate: isMobile ? [-1, 1, -1] : [-4, 4, -4] }}
-                        viewport={{ once: true }}
-                        transition={{ 
-                            y: { repeat: Infinity, duration: 3, ease: "easeInOut" },
-                            rotate: { repeat: Infinity, duration: 4, ease: "easeInOut" }
-                        }}
-                        className="relative mx-auto w-full max-w-[360px]"
-                    >
-                        {/* Lanyard Clip (The "Tie") */}
-                        <div className="absolute bottom-full left-1/2 -translate-x-1/2 flex flex-col items-center z-20 pb-2">
-                            {/* Ribbon */}
-                            <div className="w-5 h-96 bg-[#006aff] shadow-inner -mb-2 border-x-2 border-blue-800" />
-                            {/* Metal Clip */}
-                            <div className="w-10 h-14 border-4 border-slate-300 rounded-full bg-linear-to-b from-slate-100 to-slate-300 shadow-sm" />
-                            <div className="w-20 h-4 bg-linear-to-r from-slate-300 via-slate-100 to-slate-400 rounded-md -mt-3 shadow-md border border-slate-400" />
-                        </div>
+                {/* Handwritten Top-Left Note */}
+                <div className="mb-3 sm:mb-4 pl-2 sm:pl-4">
+                    <span className="font-caveat text-3xl sm:text-4xl text-slate-800 -rotate-3 inline-block select-none font-bold">
+                        about me!
+                    </span>
+                </div>
 
-                        {/* Apple-style Glass Card */}
-                        <motion.div 
-                            onMouseMove={handleMouseMove}
-                            onMouseLeave={handleMouseLeave}
-                            style={isMobile ? {} : { rotateX, rotateY, transformStyle: "preserve-3d" }}
-                            className="bg-white md:bg-white/90 md:backdrop-blur-2xl p-6 rounded-3xl shadow-[0_20px_60px_rgb(0,0,0,0.08)] border border-white relative overflow-hidden group mt-4"
-                        >
+                {/* Centered Heading Box matching user's reference */}
+                <div className="text-center mb-8 sm:mb-10">
+                    <Reveal delay={0}>
+                        <div className="inline-block px-7 sm:px-10 py-2.5 sm:py-3 border-2 border-slate-950 rounded-lg bg-white shadow-[3px_3px_0px_0px_rgba(15,23,42,1)]">
+                            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-950 font-poppins tracking-tight leading-none">
+                                what&apos;s up
+                            </h2>
+                        </div>
+                    </Reveal>
+                </div>
+
+                {/* Scrapbook Spread: Left Polaroid, Center Bio & Stickers, Right Polaroid */}
+                <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.65fr_1fr] gap-8 lg:gap-10 items-center mb-20">
+                    
+                    {/* Left Polaroid: Jeeva's Photo */}
+                    <Reveal delay={0.06} direction="left" className="w-full max-w-[280px] mx-auto">
+                        <div className="bg-white p-3.5 pb-6 rounded-md shadow-xl border border-slate-200/90 -rotate-3 hover:rotate-0 transition-transform duration-300 select-none relative group">
                             
-                            {/* Subtle animated gradient background inside card */}
-                            <div className="absolute inset-0 bg-linear-to-br from-blue-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                            {/* Pastel Washi Tape at Top Corners */}
+                            <div 
+                                className="absolute -top-3 left-4 w-12 sm:w-14 h-5.5 bg-[#93C5FD]/75 backdrop-blur-xs border border-blue-300/80 shadow-2xs z-20 pointer-events-none rounded-[1px]"
+                                style={{ transform: "rotate(-12deg)" }}
+                            />
+                            <div 
+                                className="absolute -top-3 right-4 w-12 sm:w-14 h-5.5 bg-[#FDE047]/75 backdrop-blur-xs border border-amber-300/80 shadow-2xs z-20 pointer-events-none rounded-[1px]"
+                                style={{ transform: "rotate(12deg)" }}
+                            />
+
+                            {/* Photo Container */}
+                            <div className="aspect-square relative overflow-hidden bg-slate-100 rounded-xs shadow-inner">
+                                <Image
+                                    src="/about-me.png"
+                                    alt="Jeevanantham S."
+                                    fill
+                                    sizes="(max-width: 768px) 280px, 320px"
+                                    className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                                    priority
+                                />
+                            </div>
+
+                            {/* Polaroid Chin Handwritten Caption */}
+                            <p className="text-center font-caveat text-2xl text-slate-800 font-bold mt-3">
+                                2026
+                            </p>
+                        </div>
+                    </Reveal>
+
+                    {/* Center Column: Handwritten & Conversational Story + Torn Sticker Badges */}
+                    <Reveal delay={0.12}>
+                        <div className="text-center max-w-xl mx-auto px-2 sm:px-4">
                             
-                            <div className="relative z-10">
-                                <div className="text-center mb-6">
-                                    <h3 className="text-xl font-bold font-poppins text-slate-800 tracking-wide uppercase">Developer ID</h3>
+                            <p className="font-caveat text-2xl sm:text-3xl lg:text-[2.1rem] text-slate-900 font-bold leading-snug tracking-wide">
+                                I&apos;m a developer who gets a little too excited about making complicated things feel simple.
+                            </p>
+
+                            <p className="font-caveat text-xl sm:text-2xl lg:text-[1.8rem] text-slate-800 font-bold leading-snug mt-4">
+                                I care about the small details, the edge cases everyone forgets, and shipping work that genuinely makes someone&apos;s day easier. 🎨
+                            </p>
+
+                            <p className="font-poppins text-xs sm:text-sm text-slate-500 font-medium mt-4 tracking-wide">
+                                Based in Bangalore, India • Full-stack engineering & creative web applications.
+                            </p>
+
+                            {/* Colorful Jagged Stickers (matching reference image) */}
+                            <div className="flex flex-col items-center gap-3.5 mt-8">
+                                
+                                {/* Row 1 */}
+                                <div className="flex flex-wrap items-center justify-center gap-3">
+                                    {/* Yellow Sticker */}
+                                    <div className="inline-flex items-center gap-2">
+                                        <div className="sticker-jagged px-5 py-2.5 bg-[#FFB92E] text-slate-950 font-poppins font-black text-xs sm:text-sm tracking-wide shadow-xs">
+                                            Interaction Design
+                                        </div>
+                                        <div className="w-9 h-9 rounded-md bg-[#FFB92E] flex items-center justify-center text-slate-950 shadow-xs">
+                                            <Icon icon="lucide:sparkles" className="w-4 h-4 text-slate-950" />
+                                        </div>
+                                    </div>
+
+                                    {/* Green Sticker */}
+                                    <div className="inline-flex items-center gap-2">
+                                        <div className="sticker-jagged px-5 py-2.5 bg-[#10B981] text-white font-poppins font-black text-xs sm:text-sm tracking-wide shadow-xs">
+                                            Prototyping & 3D
+                                        </div>
+                                        <div className="w-9 h-9 rounded-md bg-[#10B981] flex items-center justify-center text-white shadow-xs">
+                                            <Icon icon="lucide:palette" className="w-4 h-4 text-white" />
+                                        </div>
+                                    </div>
                                 </div>
-                                <div className="aspect-4/5 relative rounded-2xl overflow-hidden mb-6 bg-slate-100 shadow-inner flex items-center justify-center">
-                                    <Image 
-                                        src="/hero-custom-clay.png" 
-                                        alt="Jeevanantham S." 
-                                        fill 
-                                        className="object-cover transition-transform duration-700 group-hover:scale-105" 
+
+                                {/* Row 2 */}
+                                <div className="flex flex-wrap items-center justify-center gap-3">
+                                    {/* Pink Sticker */}
+                                    <div className="inline-flex items-center gap-2">
+                                        <div className="sticker-jagged px-5 py-2.5 bg-[#EC4899] text-white font-poppins font-black text-xs sm:text-sm tracking-wide shadow-xs">
+                                            User Research
+                                        </div>
+                                        <div className="w-9 h-9 rounded-md bg-[#EC4899] flex items-center justify-center text-white shadow-xs">
+                                            <Icon icon="lucide:puzzle" className="w-4 h-4 text-white" />
+                                        </div>
+                                    </div>
+
+                                    {/* Blue Sticker */}
+                                    <div className="inline-flex items-center gap-2">
+                                        <div className="sticker-jagged px-5 py-2.5 bg-[#2563EB] text-white font-poppins font-black text-xs sm:text-sm tracking-wide shadow-xs">
+                                            Motion Design
+                                        </div>
+                                        <div className="w-9 h-9 rounded-md bg-[#2563EB] flex items-center justify-center text-white shadow-xs">
+                                            <Icon icon="lucide:eye" className="w-4 h-4 text-white" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </Reveal>
+
+                    {/* Right Polaroid: Workspace Photo */}
+                    <Reveal delay={0.18} direction="right" className="w-full max-w-[280px] mx-auto">
+                        <div className="bg-white p-3.5 pb-6 rounded-md shadow-xl border border-slate-200/90 rotate-3 hover:rotate-0 transition-transform duration-300 select-none relative group">
+                            
+                            {/* Pastel Washi Tape at Top Corners */}
+                            <div 
+                                className="absolute -top-3 left-4 w-12 sm:w-14 h-5.5 bg-[#93C5FD]/75 backdrop-blur-xs border border-blue-300/80 shadow-2xs z-20 pointer-events-none rounded-[1px]"
+                                style={{ transform: "rotate(-12deg)" }}
+                            />
+                            <div 
+                                className="absolute -top-3 right-4 w-12 sm:w-14 h-5.5 bg-[#FDE047]/75 backdrop-blur-xs border border-amber-300/80 shadow-2xs z-20 pointer-events-none rounded-[1px]"
+                                style={{ transform: "rotate(12deg)" }}
+                            />
+
+                            {/* Photo Container */}
+                            <div className="aspect-square relative overflow-hidden bg-slate-100 rounded-xs shadow-inner">
+                                <Image
+                                    src="/workspace.jpg"
+                                    alt="Developer Workspace"
+                                    fill
+                                    sizes="(max-width: 768px) 280px, 320px"
+                                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                                />
+                            </div>
+
+                            {/* Polaroid Chin Handwritten Caption */}
+                            <p className="text-center font-caveat text-2xl text-slate-800 font-bold mt-3">
+                                my workspace
+                            </p>
+                        </div>
+                    </Reveal>
+
+                </div>
+
+                {/* School (Education) & Intern (Experience) - Scrapbook Index Cards */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 pt-6">
+                    
+                    {/* Education / School Index Card */}
+                    <Reveal delay={0.22} direction="left">
+                        <div 
+                            className="bg-white rounded-2xl p-7 sm:p-9 shadow-lg border-2 border-slate-200 relative -rotate-1 hover:rotate-0 transition-transform duration-300 font-poppins"
+                        >
+                            {/* Washi Tape Pinning Card */}
+                            <div 
+                                className="absolute -top-3 left-1/2 -translate-x-1/2 w-28 sm:w-32 h-6 bg-[#A7F3D0]/80 backdrop-blur-xs border border-emerald-300/90 shadow-2xs z-20 pointer-events-none rounded-[2px]"
+                                style={{ transform: "translateX(-50%) rotate(-1deg)" }}
+                            />
+
+                            {/* Header Row */}
+                            <div className="flex items-center justify-between pb-4 mb-6 border-b-2 border-dashed border-slate-200">
+                                <div>
+                                    <span className="text-xs font-bold uppercase tracking-wider text-slate-400 font-poppins block mb-0.5">
+                                        Academic Background
+                                    </span>
+                                    <h3 className="text-2xl sm:text-3xl font-black text-slate-950 tracking-tight">
+                                        Education
+                                    </h3>
+                                </div>
+                                <div className="w-13 h-13 sm:w-14 sm:h-14 rounded-2xl bg-white shadow-xs border border-slate-200/80 flex items-center justify-center p-1.5 relative overflow-hidden shrink-0 hover:scale-105 transition-transform duration-200">
+                                    <Image
+                                        src="/school-icon.png"
+                                        alt="School & Education"
+                                        width={52}
+                                        height={52}
+                                        className="w-full h-full object-contain"
                                     />
                                 </div>
-                                <div className="space-y-4 pt-2">
-                                    <div className="flex items-center gap-3 text-sm text-slate-700">
-                                        <div className="w-8 h-8 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center shrink-0 shadow-sm">
-                                            <Icon icon="logos:google-gmail" className="w-4 h-4" />
-                                        </div>
-                                        <span className="truncate font-medium">jeevanantham1035@gmail.com</span>
-                                    </div>
-                                    <div className="flex items-center gap-3 text-sm text-slate-700">
-                                        <div className="w-8 h-8 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center shrink-0 shadow-sm">
-                                            <Icon icon="twemoji:spiral-calendar" className="w-4 h-4" />
-                                        </div>
-                                        <span className="font-medium">21 / 10 / 2004</span>
-                                    </div>
-                                    <div className="flex items-center gap-3 text-sm text-slate-700">
-                                        <div className="w-8 h-8 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center shrink-0 shadow-sm">
-                                            <Icon icon="twemoji:round-pushpin" className="w-4 h-4" />
-                                        </div>
-                                        <span className="font-medium">Salem, TN</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </motion.div>
-                    </motion.div>
-
-                    {/* Right Column: Bio & Experience */}
-                    <div className="space-y-10">
-                        
-                        {/* Bio Card */}
-                        <motion.div
-                            initial={{ opacity: 0, x: 100 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-                            className="bg-white rounded-3xl p-8 md:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100"
-                        >
-                            <div className="mb-6">
-                                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 font-poppins tracking-tight whitespace-nowrap overflow-hidden text-ellipsis">
-                                    Jeevanantham S.
-                                </h2>
-                                <p className="text-[#006aff] font-medium text-lg mt-2 tracking-wide">Web and Software Developer</p>
                             </div>
 
-                            <div className="space-y-4 text-lg text-slate-600 leading-relaxed">
-                                <p>
-                                    I build responsive, secure, and user-centric platforms. My focus is on creating elegant solutions to complex problems, merging modern aesthetics with high-performance engineering.
-                                </p>
-                                <p>
-                                    I am constantly learning new trends to create quality digital products that deliver practical and impressive value to businesses.
-                                </p>
+                            {/* Education Items - Clean Cards with Zero AI Lines */}
+                            <div className="space-y-4">
+                                <div className="p-4 sm:p-5 rounded-xl bg-slate-50/80 border border-slate-200/70 hover:bg-slate-50 transition-colors">
+                                    <div className="flex flex-wrap items-center justify-between gap-2 mb-1.5">
+                                        <span className="text-xs font-bold text-emerald-700 font-poppins uppercase tracking-wider">
+                                            2022 — 2026
+                                        </span>
+                                        <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-amber-100/90 border border-amber-300 text-amber-950 font-bold font-poppins text-xs shadow-2xs">
+                                            ★ 8.01 CGPA
+                                        </span>
+                                    </div>
+                                    <h4 className="font-extrabold text-base sm:text-lg text-slate-900 leading-tight">
+                                        B.E. (Hons) Computer Science & Engineering
+                                    </h4>
+                                    <p className="text-slate-500 text-xs sm:text-sm font-medium font-poppins mt-1">
+                                        Jansons Institute of Technology
+                                    </p>
+                                </div>
+
+                                <div className="p-4 sm:p-5 rounded-xl bg-slate-50/80 border border-slate-200/70 hover:bg-slate-50 transition-colors">
+                                    <div className="flex flex-wrap items-center justify-between gap-2 mb-1.5">
+                                        <span className="text-xs font-bold text-slate-500 font-poppins uppercase tracking-wider">
+                                            2021 — 2022
+                                        </span>
+                                        <span className="inline-flex items-center px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-slate-800 font-bold font-poppins text-xs">
+                                            78% Aggregate
+                                        </span>
+                                    </div>
+                                    <h4 className="font-extrabold text-base sm:text-lg text-slate-900 leading-tight">
+                                        Higher Secondary School
+                                    </h4>
+                                    <p className="text-slate-500 text-xs sm:text-sm font-medium font-poppins mt-1">
+                                        SSM Lakshmi Ammal School
+                                    </p>
+                                </div>
                             </div>
-                        </motion.div>
-
-                        {/* Experience & Education Grid */}
-                        <div className="grid md:grid-cols-2 gap-6">
-                            
-                            {/* Education Card */}
-                            <motion.div
-                                initial={{ opacity: 0, x: 100 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                                className="bg-white rounded-3xl p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100"
-                            >
-                                <div className="flex items-center gap-3 mb-8">
-                                    <div className="w-10 h-10 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center shadow-sm">
-                                        <Icon icon="twemoji:graduation-cap" className="w-5 h-5" />
-                                    </div>
-                                    <h3 className="text-2xl font-bold text-slate-900 font-poppins">Education</h3>
-                                </div>
-                                
-                                <div className="space-y-0">
-                                    <div className="border-b border-slate-100 pb-6 mb-6 last:border-0 last:pb-0 last:mb-0">
-                                        <span className="text-sm font-semibold text-[#006aff] tracking-wider uppercase mb-1 block">2022 - 2026</span>
-                                        <h4 className="font-bold text-lg text-slate-900 leading-tight">B.E. (Hons) CSE</h4>
-                                        <p className="text-slate-500 text-sm mt-1 mb-2">Jansons Institute of Technology</p>
-                                        <span className="inline-flex items-center justify-center px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 text-xs font-semibold">8.01 CGPA</span>
-                                    </div>
-                                    
-                                    <div className="border-b border-slate-100 pb-6 mb-6 last:border-0 last:pb-0 last:mb-0">
-                                        <span className="text-sm font-semibold text-slate-500 tracking-wider uppercase mb-1 block">2021 - 2022</span>
-                                        <h4 className="font-bold text-lg text-slate-900 leading-tight">High School</h4>
-                                        <p className="text-slate-500 text-sm mt-1 mb-2">SSM Lakshmi Ammal School</p>
-                                        <span className="inline-flex items-center justify-center px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 text-xs font-semibold">78%</span>
-                                    </div>
-                                </div>
-                            </motion.div>
-
-                            {/* Experience Card */}
-                            <motion.div
-                                initial={{ opacity: 0, x: 100 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                                className="bg-white rounded-3xl p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100"
-                            >
-                                <div className="flex items-center gap-3 mb-8">
-                                    <div className="w-10 h-10 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center shadow-sm">
-                                        <Icon icon="twemoji:briefcase" className="w-5 h-5" />
-                                    </div>
-                                    <h3 className="text-2xl font-bold text-slate-900 font-poppins">Experience</h3>
-                                </div>
-                                
-                                <div className="space-y-0">
-                                    <div className="border-b border-slate-100 pb-6 mb-6 last:border-0 last:pb-0 last:mb-0">
-                                        <span className="text-sm font-semibold text-[#006aff] tracking-wider uppercase mb-1 block">Nov '25 - Jan '26</span>
-                                        <h4 className="font-bold text-lg text-slate-900 leading-tight">Full Stack Developer Intern</h4>
-                                        <p className="text-slate-500 text-sm mt-1 mb-3">SUVID Solutions</p>
-                                        <ul className="space-y-2 text-sm text-slate-600">
-                                            <li className="flex items-start gap-2">
-                                                <div className="w-1.5 h-1.5 rounded-full bg-slate-300 mt-1.5 shrink-0" />
-                                                <span>Engineered secure JWT APIs.</span>
-                                            </li>
-                                            <li className="flex items-start gap-2">
-                                                <div className="w-1.5 h-1.5 rounded-full bg-slate-300 mt-1.5 shrink-0" />
-                                                <span>Crafted high-fidelity React interfaces.</span>
-                                            </li>
-                                            <li className="flex items-start gap-2">
-                                                <div className="w-1.5 h-1.5 rounded-full bg-slate-300 mt-1.5 shrink-0" />
-                                                <span>Refactored SQL queries, reducing time by 25%.</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </motion.div>
-
                         </div>
+                    </Reveal>
 
-                    </div>
+                    {/* Internship / Experience Index Card */}
+                    <Reveal delay={0.26} direction="right">
+                        <div 
+                            className="bg-white rounded-2xl p-7 sm:p-9 shadow-lg border-2 border-slate-200 relative rotate-1 hover:rotate-0 transition-transform duration-300 font-poppins"
+                        >
+                            {/* Washi Tape Pinning Card */}
+                            <div 
+                                className="absolute -top-3 left-1/2 -translate-x-1/2 w-28 sm:w-32 h-6 bg-[#FED7AA]/80 backdrop-blur-xs border border-amber-300/90 shadow-2xs z-20 pointer-events-none rounded-[2px]"
+                                style={{ transform: "translateX(-50%) rotate(1deg)" }}
+                            />
+
+                            {/* Header Row */}
+                            <div className="flex items-center justify-between pb-4 mb-6 border-b-2 border-dashed border-slate-200">
+                                <div>
+                                    <span className="text-xs font-bold uppercase tracking-wider text-slate-400 font-poppins block mb-0.5">
+                                        Work Experience
+                                    </span>
+                                    <h3 className="text-2xl sm:text-3xl font-black text-slate-950 tracking-tight">
+                                        Internship
+                                    </h3>
+                                </div>
+                                <div className="w-13 h-13 sm:w-14 sm:h-14 rounded-2xl bg-white shadow-xs border border-slate-200/80 flex items-center justify-center p-1.5 relative overflow-hidden shrink-0 hover:scale-105 transition-transform duration-200">
+                                    <Image
+                                        src="/job-icon.png"
+                                        alt="Internship & Job"
+                                        width={52}
+                                        height={52}
+                                        className="w-full h-full object-contain"
+                                    />
+                                </div>
+                            </div>
+
+                            {/* Internship Experience - Clean Card with Zero AI Lines */}
+                            <div className="p-4 sm:p-5 rounded-xl bg-slate-50/80 border border-slate-200/70">
+                                <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
+                                    <span className="text-xs font-bold text-amber-800 font-poppins uppercase tracking-wider">
+                                        Nov &apos;25 — Jan &apos;26 (3 Mos)
+                                    </span>
+                                    <span className="inline-flex items-center px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-800 font-bold font-poppins text-xs">
+                                        Full Stack
+                                    </span>
+                                </div>
+                                
+                                <h4 className="font-extrabold text-base sm:text-lg text-slate-900 leading-tight">
+                                    Full Stack Developer Intern
+                                </h4>
+                                <p className="text-slate-600 text-xs sm:text-sm font-semibold font-poppins mt-0.5 mb-3">
+                                    SUVID Solutions
+                                </p>
+
+                                <ul className="space-y-2 text-xs sm:text-sm text-slate-600 font-medium font-poppins">
+                                    <li className="flex items-start gap-2">
+                                        <span className="text-emerald-600 font-bold">✓</span>
+                                        <span>Engineered secure JWT API authentication &amp; role-based routes.</span>
+                                    </li>
+                                    <li className="flex items-start gap-2">
+                                        <span className="text-emerald-600 font-bold">✓</span>
+                                        <span>Crafted interactive high-fidelity user interfaces with React.</span>
+                                    </li>
+                                    <li className="flex items-start gap-2">
+                                        <span className="text-emerald-600 font-bold">✓</span>
+                                        <span>Refactored backend SQL queries, reducing load times by 25%.</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </Reveal>
+
                 </div>
+
             </div>
         </section>
     );

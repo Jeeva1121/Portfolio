@@ -6,10 +6,12 @@ import Projects from "@/components/Projects";
 import Certifications from "@/components/Certifications";
 import Contact from "@/components/Contact";
 import ScrollToTop from "@/components/ScrollToTop";
+import SmoothScroll from "@/components/SmoothScroll";
 
 export default function Home() {
   return (
     <main className="relative bg-[#1A1A1A] text-slate-900 min-h-screen font-sans selection:bg-slate-900 selection:text-white">
+      <SmoothScroll />
       <Navbar />
       
       {/* Editorial Flow */}
