@@ -260,42 +260,17 @@ export default function Navbar() {
                             <div className="my-2 border-t border-slate-100" />
 
                             {/* Bottom Item matching "Log out" layout in reference */}
-                            <div className="flex flex-col gap-1">
-                                <a
-                                    href="/resume.pdf"
-                                    download="Jeevanantham_Resume.pdf"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    onClick={() => setIsMobileMenuOpen(false)}
-                                    className="flex items-center gap-3 px-3.5 py-2 rounded-2xl text-[14px] font-medium text-slate-700 hover:text-slate-950 hover:bg-[#F4F4F6] transition-colors"
-                                >
-                                    <Icon icon="lucide:download" className="w-4.5 h-4.5 text-slate-600" />
-                                    <span>Download CV</span>
-                                </a>
-
-                                {/* Subtle Social Footer */}
-                                <div className="flex items-center justify-between px-3.5 pt-1 text-[11px] font-semibold text-slate-500">
-                                    <a
-                                        href="https://github.com/Jeeva1121"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="hover:text-slate-950 transition-colors flex items-center gap-1.5"
-                                    >
-                                        <Icon icon="mdi:github" className="w-3.5 h-3.5" />
-                                        <span>GitHub</span>
-                                    </a>
-                                    <span className="text-slate-300">•</span>
-                                    <a
-                                        href="https://www.linkedin.com/in/jeevanantham5b2a19324"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="hover:text-[#0A66C2] transition-colors flex items-center gap-1.5"
-                                    >
-                                        <Icon icon="mdi:linkedin" className="w-3.5 h-3.5 text-[#0A66C2]" />
-                                        <span>LinkedIn</span>
-                                    </a>
-                                </div>
-                            </div>
+                            <a
+                                href="/resume.pdf"
+                                download="Jeevanantham_Resume.pdf"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                onClick={() => setIsMobileMenuOpen(false)}
+                                className="flex items-center gap-3 px-3.5 py-2.5 rounded-2xl text-[14px] font-medium text-slate-700 hover:text-slate-950 hover:bg-[#F4F4F6] transition-colors"
+                            >
+                                <Icon icon="lucide:download" className="w-4.5 h-4.5 text-slate-600" />
+                                <span>Download CV</span>
+                            </a>
                         </motion.div>
                     </>
                 )}
