@@ -93,27 +93,7 @@ const projects = [
 
 export default function Projects() {
     return (
-        <section id="projects" className="pt-12 sm:pt-16 pb-24 sm:pb-32 bg-[#F8FAFC] relative overflow-hidden scroll-mt-0" style={{ contain: "layout style" }}>
-            {/* Dotted Grid Background */}
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                height="100%"
-                width="100%"
-                className="absolute inset-0 w-full h-full pointer-events-none z-0"
-            >
-                <defs>
-                    <pattern
-                        patternUnits="userSpaceOnUse"
-                        height="28"
-                        width="28"
-                        id="dottedGridProjects"
-                    >
-                        <circle fill="rgba(15,23,42,0.08)" r="1.2" cy="2" cx="2" />
-                    </pattern>
-                </defs>
-                <rect fill="url(#dottedGridProjects)" height="100%" width="100%" />
-            </svg>
-
+        <section id="projects" className="pt-12 sm:pt-16 pb-24 sm:pb-32 bg-[#F8FAFC] relative overflow-hidden scroll-mt-0 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] [background-size:24px_24px]">
             <div className="container mx-auto px-6 max-w-6xl relative z-10">
                 {/* Section Header */}
                 <div className="mb-16 sm:mb-20 text-center sm:text-left">
@@ -170,9 +150,9 @@ export default function Projects() {
                                         </div>
                                     </div>
 
-                                    {/* Main Folder Dossier Body - Compact on mobile */}
+                                    {/* Main Folder Dossier Body - Optimized for fluid scrolling */}
                                     <div
-                                        className={`${theme.folderBg} ${theme.folderBorder} border rounded-2xl sm:rounded-[2rem] rounded-tl-none p-4 sm:p-8 lg:p-12 shadow-[0_25px_60px_-15px_rgba(15,23,42,0.12)] relative overflow-hidden transition-all duration-300 font-poppins`}
+                                        className={`${theme.folderBg} ${theme.folderBorder} border rounded-2xl sm:rounded-[2rem] rounded-tl-none p-4 sm:p-8 lg:p-12 shadow-md sm:shadow-[0_25px_60px_-15px_rgba(15,23,42,0.12)] relative overflow-hidden transition-all duration-300 font-poppins transform-gpu`}
                                     >
                                         <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_1.15fr] gap-4 sm:gap-10 lg:gap-12 items-center">
                                             
@@ -183,7 +163,7 @@ export default function Projects() {
                                                     <div className="flex items-center gap-2 mb-1.5 sm:mb-3">
                                                         <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-current opacity-80" />
                                                         <span className={`text-[11px] sm:text-xs font-mono font-bold uppercase tracking-wider ${theme.textColor} opacity-80`}>
-                                                            {proj.date}
+                                                             {proj.date}
                                                         </span>
                                                         <span className={`${theme.textColor} opacity-40`}>/</span>
                                                         <span className={`text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-wider ${theme.textColor} opacity-80`}>
@@ -204,9 +184,9 @@ export default function Projects() {
                                                     {/* Tech Stack Chips */}
                                                     <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-4 sm:mb-8">
                                                         {proj.tech.map((t) => (
-                                                            <span
+                                                             <span
                                                                 key={t}
-                                                                className={`px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full text-[11px] sm:text-xs font-semibold ${theme.badgeBg} border backdrop-blur-xs`}
+                                                                className={`px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full text-[11px] sm:text-xs font-semibold ${theme.badgeBg} border`}
                                                             >
                                                                 {t}
                                                             </span>
@@ -243,24 +223,26 @@ export default function Projects() {
                                                 
                                                 {/* Left Scotch Tape Strip */}
                                                 <div
-                                                    className={`absolute -top-1 left-6 sm:left-12 w-10 sm:w-16 h-4 sm:h-6 ${theme.tapeBorder} backdrop-blur-xs shadow-xs -rotate-6 z-30 pointer-events-none rounded-[1px]`}
+                                                    className={`absolute -top-1 left-6 sm:left-12 w-10 sm:w-16 h-4 sm:h-6 ${theme.tapeBorder} shadow-2xs -rotate-6 z-30 pointer-events-none rounded-[1px]`}
                                                     style={{ transform: "rotate(-6deg)" }}
                                                 />
 
                                                 {/* Right Scotch Tape Strip */}
                                                 <div
-                                                    className={`absolute -top-1 right-6 sm:right-12 w-10 sm:w-16 h-4 sm:h-6 ${theme.tapeBorder} backdrop-blur-xs shadow-xs rotate-6 z-30 pointer-events-none rounded-[1px]`}
+                                                    className={`absolute -top-1 right-6 sm:right-12 w-10 sm:w-16 h-4 sm:h-6 ${theme.tapeBorder} shadow-2xs rotate-6 z-30 pointer-events-none rounded-[1px]`}
                                                     style={{ transform: "rotate(6deg)" }}
                                                 />
 
-                                                {/* Framed Photo Mockup Container - Compact on mobile */}
-                                                <div className="relative rounded-xl sm:rounded-2xl overflow-hidden bg-black/20 border sm:border-2 border-white/20 shadow-xl group-hover:scale-[1.01] transition-transform duration-500">
+                                                {/* Framed Photo Mockup Container */}
+                                                <div className="relative rounded-xl sm:rounded-2xl overflow-hidden bg-black/20 border sm:border-2 border-white/20 shadow-md sm:shadow-xl group-hover:scale-[1.01] transition-transform duration-500">
                                                     <div className="aspect-16/9 sm:aspect-16/10 max-h-[195px] sm:max-h-none relative w-full overflow-hidden">
                                                         <Image
                                                             src={proj.image}
                                                             alt={proj.title}
                                                             fill
                                                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
+                                                            quality={75}
+                                                            loading="lazy"
                                                             className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                                                         />
                                                     </div>

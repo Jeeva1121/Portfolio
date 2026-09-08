@@ -95,10 +95,12 @@ export default function Reveal({
             className={className}
             style={{
                 opacity: isVisible ? 1 : 0,
-                transform: isVisible ? visibleTransform : initialTransform,
-                transition: reducedMotion
+                transform: animComplete ? "none" : (isVisible ? visibleTransform : initialTransform),
+                transition: animComplete
+                    ? "none"
+                    : reducedMotion
                     ? "opacity 0.2s ease"
-                    : `opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1) ${delay}s, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) ${delay}s`,
+                    : `opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1) ${delay}s, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) ${delay}s`,
                 willChange: animComplete ? "auto" : "opacity, transform"
             }}
         >

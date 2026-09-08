@@ -150,7 +150,7 @@ export default function Navbar() {
                 <AnimatedButton href="#contact" text="Hire Me" size="sm" className="px-3.5! py-1.5! border-[3px]! [&_span]:text-xs! [&_span]:font-semibold!" />
             </motion.div>
 
-            {/* Mobile Navigation - Right Corner Elements matching reference image */}
+            {/* Mobile Navigation - Right Corner Toggle */}
             <motion.div
                 initial={{ opacity: 0, x: 50 }}
                 animate={{
@@ -158,23 +158,9 @@ export default function Navbar() {
                     x: isMobile ? 0 : (isHidden ? 50 : 0),
                     pointerEvents: isMobile ? "auto" : (isHidden ? "none" : "auto")
                 }}
-                className="md:hidden fixed top-4 right-4 z-999 flex items-center gap-2.5 font-poppins"
+                className="md:hidden fixed top-4 right-4 z-999 flex items-center font-poppins"
             >
-                {/* Profile Avatar as in reference */}
-                <a
-                    href="#about"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="w-10 h-10 rounded-full overflow-hidden border border-slate-200/90 shadow-sm flex items-center justify-center bg-white active:scale-95 transition-transform"
-                    aria-label="My profile"
-                >
-                    <img
-                        src="/about-me.png"
-                        alt="Profile"
-                        className="w-full h-full object-cover"
-                    />
-                </a>
-
-                {/* Circular Toggle Button matching reference */}
+                {/* Circular Toggle Button */}
                 <button
                     onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                     className="w-10 h-10 rounded-full bg-white/95 backdrop-blur-md text-slate-800 shadow-sm border border-slate-200/90 flex items-center justify-center transition-transform active:scale-95"
