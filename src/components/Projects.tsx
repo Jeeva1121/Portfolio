@@ -8,6 +8,34 @@ const projects = [
     {
         num: "01",
         tabLabel: "+ PROJECT 01",
+        title: "Zesty Juice",
+        date: "SEP 2026",
+        category: "Premium E-Commerce",
+        desc: "A high-end editorial e-commerce platform for a cold-pressed juice brand. Features 60fps smooth scrolling, cinematic page transitions, real-time order tracking, and a dynamic cart experience.",
+        tech: ["React", "Tailwind CSS", "GSAP", "Supabase"],
+        links: {
+            github: "https://github.com/Jeeva1121/Juice",
+            live: "https://zesty-juice.vercel.app/"
+        },
+        image: "/projects/zesty.png",
+        theme: {
+            folderBg: "bg-[#F97316]",
+            folderBorder: "border-orange-500/80",
+            tabActiveBg: "bg-[#C2410C]",
+            tabActiveText: "text-white",
+            tabInactiveBg: "bg-[#EA580C]",
+            tabInactiveText: "text-orange-100",
+            textColor: "text-white",
+            mutedTextColor: "text-orange-50",
+            accentColor: "text-[#FDBA74]",
+            linkBorder: "border-white/40 hover:border-white",
+            badgeBg: "bg-white/10 text-white border-white/10",
+            tapeBorder: "border-white/60 bg-white/40"
+        }
+    },
+    {
+        num: "02",
+        tabLabel: "+ PROJECT 02",
         title: "Hack@JIT 1.0",
         date: "MAR 2026",
         category: "Full Stack Platform",
@@ -34,8 +62,8 @@ const projects = [
         }
     },
     {
-        num: "02",
-        tabLabel: "+ PROJECT 02",
+        num: "03",
+        tabLabel: "+ PROJECT 03",
         title: "WebCraft 3D",
         date: "JAN 2026",
         category: "GPU & Interactive WebGL",
@@ -62,8 +90,8 @@ const projects = [
         }
     },
     {
-        num: "03",
-        tabLabel: "+ PROJECT 03",
+        num: "04",
+        tabLabel: "+ PROJECT 04",
         title: "Lumina AI",
         date: "NOV 2025",
         category: "Stateless RAG System",
